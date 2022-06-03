@@ -5,7 +5,7 @@ what kind of food the restaurant is serving.
 
 **********************************************************
 
-2. As a user, I can ![SELECT](https://sqlzoo.net/wiki/SQL_Tutorial)
+2. As a user, I can SELECT
 the items because I want to order specific items from their menu.
 
 **********************************************************
