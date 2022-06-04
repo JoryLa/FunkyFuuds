@@ -7,14 +7,13 @@
 
 const express = require('express');
 const router  = express.Router();
+const databaseQueries = require('../server/database');
 
 module.exports = (db) => {
-  router.get("/home", (req, res) => {
-    let query = `SELECT * FROM items`;
-    console.log('main page items', query);
-    db.query(query)
+  router.get("/", (req, res) => {
+    databaseQueries.getAllItems(db)
       .then(data => {
-        const foodItems = data.rows;
+        const foodItems = data;
         res.json({ foodItems });
       })
       .catch(err => {
@@ -24,12 +23,14 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/home/checkout", (req, res) => {
+  router.get("/checkout", (req, res) => {
     let query = `SELECT * FROM orders`;
     console.log('Items in checkout', query);
-    db(query)
+    // console.log('DB: ',db);
+    db.query(query)
       .then(data => {
-
+        const foodItems = data.rows;
+        res.json({ foodItems });
       })
       .catch(err => {
         res

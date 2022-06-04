@@ -15,3 +15,4 @@ INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALU
   ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, 'http://img' ),
   ('Pork?', 'Your guess is as good as ours', 300, 10, 'http://img'),
   ('Seared burrito', 'Unexpected consequences', 600, 15, 'http://img');
+
