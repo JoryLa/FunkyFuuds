@@ -23,12 +23,6 @@ CREATE TABLE items (
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  order_time TIMESTAMP NOT NULL
-);
-
-CREATE TABLE order_items (
-  id SERIAL PRIMARY KEY NOT NULL,
-  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
-  item_id INTEGER REFERENCES items(id) ON DELETE CASCADE,
-  quantity INTEGER NOT NULL
+  order_time TIMESTAMP NOT NULL,
+  item_id
 );
