@@ -1,8 +1,4 @@
 // Client facing scripts here
-$(() => {
-
-})
-
 
 function menuItems(items) {
 return `
@@ -33,12 +29,24 @@ const items = [{
   id:1,
   item: 'pizza',
   description: 'tasty food',
-
+},
+{
+  id:2,
+  item: 'burgers',
+  description: 'yummy',
+},
+{
+  id:2,
+  item: 'fries',
+  description: 'poopies tastes great with fries as its got the flavour from that corn last night',
 }]
 
-$('body').append(menuItems(items[0]))
+for(let key in items){
+  let obj = items[key];
 
+ $('body').append(menuItems(obj))
+}
 
 });
 
-console.log()
+
