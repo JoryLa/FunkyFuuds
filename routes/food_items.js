@@ -10,12 +10,12 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM widgets`;
+    let query = `SELECT * FROM food_items`;
     console.log(query);
     db.query(query)
       .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
+        const foodItems = data.rows;
+        res.json({ foodItems });
       })
       .catch(err => {
         res
@@ -25,3 +25,20 @@ module.exports = (db) => {
   });
   return router;
 };
+
+
+
+// CREATE: adding the item to the cart
+// READ: the home page with the list of all the menu items
+// EDIT: modify the contents of the cart
+// DELETE: delete item from the checkout page
+
+
+
+
+
+//BROWSE//GET /funkyfuuds
+//READ////GET /funkyfuuds/:id(/checkout)
+//EDIT//POST(PATCH) /funkyfuuds/:id(/checkout)
+//ADD/////POST /funkyfuuds
+//DELETE//POST /funkyfuuds/:id(/checkout)
