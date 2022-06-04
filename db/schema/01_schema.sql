@@ -1,8 +1,8 @@
 -- Drop and recreate Users table (Example)
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
-DROP TABLE IF EXISTS order CASCADE;
-DROP TABLE IF EXISTS order_items CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE items (
   description VARCHAR(255) NOT NULL,
   price INTEGER NOT NULL,
   cooking_time INTEGER NOT NULL,
-  thumbnail_photo VARCHAR(255),
+  thumbnail_photo VARCHAR(255)
 );
 
 CREATE TABLE orders (
