@@ -1,0 +1,35 @@
+.food{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: yellow;
+  align-items: center;
+  height: 120px;
+  border: solid black;
+}
+
+.thumbnail{
+  border: solid black;
+}
+
+.dishname{
+  border: solid black;
+}
+
+.description{
+border: solid black;
+}
+
+.add{
+  display: flex;
+  border: solid black;
+  flex-direction: column;
+}
+
+.button{
+  display: flex;
+  flex-direction: row;
+}
+
+#input{
+  width: 50px;
+}

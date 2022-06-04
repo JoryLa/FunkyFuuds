@@ -1,0 +1,14 @@
+.nav{
+  display:flex;
+  justify-content: space-between;
+  background-color: yellow;
+  position:relative;
+  z-index: 1;
+
+  width: 100%;
+  Height: 120px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+
