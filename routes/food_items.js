@@ -14,8 +14,8 @@ module.exports = (db) => {
     console.log(query);
     db.query(query)
       .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
+        const foodItems = data.rows;
+        res.json({ foodItems });
       })
       .catch(err => {
         res
@@ -37,7 +37,7 @@ module.exports = (db) => {
 
 
 
-//BROWSE//GET /funkyfuuds 
+//BROWSE//GET /funkyfuuds
 //READ////GET /funkyfuuds/:id(/checkout)
 //EDIT//POST(PATCH) /funkyfuuds/:id(/checkout)
 //ADD/////POST /funkyfuuds
