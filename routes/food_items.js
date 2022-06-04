@@ -9,9 +9,9 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    let query = `SELECT * FROM food_items`;
-    console.log(query);
+  router.get("/home", (req, res) => {
+    let query = `SELECT * FROM items`;
+    console.log('main page items', query);
     db.query(query)
       .then(data => {
         const foodItems = data.rows;
@@ -23,8 +23,27 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/home/checkout", (req, res) => {
+    let query = `SELECT * FROM orders`;
+    console.log('Items in checkout', query);
+    db(query)
+      .then(data => {
+
+      })
+      .catch(err => {
+        res
+        .status(500)
+        .json({ error: err.message });
+      });
+  });
+
   return router;
 };
+
+
+
+
 
 
 
