@@ -7,6 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const session = require('express-session');
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -18,6 +19,7 @@ db.connect();
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -49,9 +51,31 @@ app.use("/api/food_items", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
+  //const user = req.body;
+  //console.log('req.body', req.body);
+  // req.session.userId = user.id;
   res.render("index");
+});
+
+app.get("/checkout", (req, res) => {
+  res.render("checkout");
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+// // do this instead
+app.get('/:id', (req, res) => {
+  console.log('change user id', req.params.id)
+  console.log('req.session', req.session)
+//   // using encrypted cookies
+  req.session.user_id = req.params.id;
+  console.log('req.session.user_id', req.session.user_id)
+
+//   // or using plain-text cookies
+  res.cookie('user_id', req.params.id);
+
+//   // send the user somewhere
+  res.redirect('/');
+  });

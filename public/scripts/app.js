@@ -16,7 +16,7 @@ const menuItems = (items) => {
   </p>
   </div>
   <div class="add">
-  Add food
+  <button type="button" class="btn btn-danger">Add to Cart</button>
   <div class="button">
   <button id="plus">+</button>
   <input type="number" value="0" id="input" />
