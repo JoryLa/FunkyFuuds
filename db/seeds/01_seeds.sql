@@ -9,12 +9,12 @@ INSERT INTO users (name, phone_number, email) VALUES
 
 
 INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALUES
-  ('Funky Burger', 'Your favourite burger but funkier', 2000, 20, 'http://img'),
-  ('Paralizing pizza', 'Don\t test it', 3000, 15, 'http://img'),
-  ('Stuffed animal', '????', 3000, 90, 'http://img'),
-  ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, 'http://img' ),
-  ('Pork?', 'Your guess is as good as ours', 300, 10, 'http://img'),
-  ('Seared burrito', 'Unexpected consequences', 600, 15, 'http://img');
+  ('Funky Burger', 'Your favourite burger but funkier', 2000, 20, '../../docs/burger.jpeg'),
+  ('Paralizing pizza', 'Don\t test it', 3000, 15, '../../docs/pizza.jpeg'),
+  ('Stuffed animal', '????', 3000, 90, '../../docs/stuffed_animal.jpeg'),
+  ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, '../../docs/fish.jpeg' ),
+  ('Pork?', 'Your guess is as good as ours', 300, 10, '../../docs/pork.jpeg'),
+  ('Seared burrito', 'Unexpected consequences', 600, 15, '../../docs/burrito.jpeg');
 
   INSERT INTO orders (user_id, item_id) VALUES
   (2, 3),
