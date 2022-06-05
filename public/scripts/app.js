@@ -34,12 +34,11 @@ const menuItems = (items) => {
 const loadmenu = () => {
   $('#food-list').empty()
   $.get("http://localhost:8080/api/food_items", (res) => {
-    console.log("res", res);
     for (let key of res.foodItems) {
-      console.log("key", key);
       menuItems(key);
     }
   });
 };
 loadmenu()
+
 

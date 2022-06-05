@@ -51,8 +51,8 @@ border-radius: 0px 0px 0px 50px;
 
 .extra{
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  /* justify-content: space-between;
+  width: 90%; */
   flex-direction: row;
 }
 
