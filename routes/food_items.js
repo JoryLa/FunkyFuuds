@@ -24,13 +24,10 @@ module.exports = (db) => {
   });
 
   router.get("/checkout", (req, res) => {
-    let query = `SELECT * FROM orders`;
-    console.log('Items in checkout', query);
-    // console.log('DB: ',db);
-    db.query(query)
+    databaseQueries.getOrderByUser(db)
       .then(data => {
-        const foodItems = data.rows;
-        res.json({ foodItems });
+        const orderItems = data;
+        res.json({ orderItems });
       })
       .catch(err => {
         res

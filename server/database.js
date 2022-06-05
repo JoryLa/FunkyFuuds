@@ -15,9 +15,9 @@ exports.getAllItems = getAllItems;
 
 // Get all items for a single user.
 
-const getAllItemsInTheCart = function(db, user_id) {
+const getOrderByUser = function(db, user_id) {
   return db
-    .query(`SELECT * FROM orders WHERE user_id = $1`, [user_id])
+    .query(`SELECT * FROM orders WHERE user_id = $1`, [2])
     .then((result) => {
       return result.rows;
     })
@@ -25,7 +25,7 @@ const getAllItemsInTheCart = function(db, user_id) {
       console.log(err.message);
     });
 }
-exports.getAllItemsInTheCart = getAllItemsInTheCart;
+exports.getOrderByUser = getOrderByUser;
 
 // ADD ITEM TO THE CART
 

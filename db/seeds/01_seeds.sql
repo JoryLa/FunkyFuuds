@@ -16,3 +16,7 @@ INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALU
   ('Pork?', 'Your guess is as good as ours', 300, 10, 'http://img'),
   ('Seared burrito', 'Unexpected consequences', 600, 15, 'http://img');
 
+  INSERT INTO orders (user_id, item_id) VALUES
+  (2, 3),
+  (5, 4),
+  (6, 6)
