@@ -1,6 +1,10 @@
 .nav{
   display:flex;
+<<<<<<< HEAD
+  justify-content: space-between;
+=======
   /* justify-content:space-between; */
+>>>>>>> 302d485e14fa526968f9327373036cd0a4570900
   align-items: center;
   background-color: yellow;
   border: solid black;

@@ -11,6 +11,7 @@ const databaseQueries = require('../server/database');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    console.log('req.session.user_id', req.session.user_id);
     databaseQueries.getAllItems(db)
       .then(data => {
         const foodItems = data;
