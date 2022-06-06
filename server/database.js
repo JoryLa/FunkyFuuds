@@ -29,10 +29,10 @@ exports.getOrderByUser = getOrderByUser;
 
 // ADD ITEM TO THE CART
 
-const addItemToOrder =  function(db, {user_id, item_id}) {
-  const values = [user_id, item_id];
+const addItemToOrder =  function(db, {user_id, item_id, quantity}) {
+  const values = [user_id, item_id, quantity];
   return db
-  .query(`INSERT INTO orders (orders.user_id, orders.item_id) VALUES ($1, $2) RETURNING *`, [values]);
+  .query(`INSERT INTO orders (user_id, item_id, quantity) VALUES ($1, $2, $3) RETURNING *`, [values]);
 };
 
 exports.addItemToOrder = addItemToOrder;
