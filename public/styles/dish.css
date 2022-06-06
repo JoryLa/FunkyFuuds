@@ -8,10 +8,11 @@
   margin: 20px;
 }
 
-.thumbnail{
+.box img{
   width: 100px;
   height: 100px;
   border: solid black;
+  object-fit: cover;
 }
 
 .dishname{

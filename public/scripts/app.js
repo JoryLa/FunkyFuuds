@@ -3,9 +3,10 @@ $(document).ready(function () {
   const menuItems = (foodItem) => {
     const menuTemplate = `
   <article class="food">
-  <section class="thumbnail">
-  <img src="${foodItem.thumbnail_photo}">
-      </section>
+  <div class="thumbnail">
+  <div class="box" ><img src="${foodItem.thumbnail_photo}">
+  </div>
+      </div>
   <div class="content">
   <p> ${foodItem.item}
   </p>
