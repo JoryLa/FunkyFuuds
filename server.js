@@ -66,7 +66,7 @@ app.listen(PORT, () => {
 });
 
 // // do this instead
-app.get('/:id', (req, res) => {
+app.get('/user/:id', (req, res) => {
   console.log('change user id', req.params.id)
   console.log('req.session', req.session)
 //   // using encrypted cookies

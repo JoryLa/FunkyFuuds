@@ -24,9 +24,9 @@ const menuItems = (items) => {
   $${items.price / 100}
   </div>
   <div class="button">
-  <button id="plus">+</button>
-  <input type="number" value="0" min="0" max="10" id="input" />
-  <button id="minus">−</button>
+  <button class="plus">+</button>
+  <input type="number" value="0" min="0" max="10" class="input" />
+  <button class="minus">−</button>
   </div>
   </div>
   </article>
@@ -45,20 +45,20 @@ const loadmenu = () => {
 loadmenu();
 
   $(window).on('load', function() {
-  $("#plus").click(() => {
+  $(".plus").click(() => {
     // console.log("clicked");
-  num = parseInt($("#input").val());
+  num = parseInt($(".input").val());
   if(num < 10){
   console.log('num', num);
-  $("#input").val(num + 1);
+  $(".input").val(num + 1);
   }
   });
- $("#minus").click(() => {
+ $(".minus").click(() => {
     // console.log("clicked");
-  num = parseInt($("#input").val());
+  num = parseInt($(".input").val());
     if(num > 0){
   console.log('num -', num);
-  $("#input").val(num - 1);
+  $(".input").val(num - 1);
     }
   });
 });
