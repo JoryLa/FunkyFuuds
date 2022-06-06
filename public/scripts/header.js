@@ -35,7 +35,7 @@ $(document).ready(function () {
   }
   if (window.location.pathname === "/") {
     $(".btn.btn-warning")
-      .text("CART")
+      .append("<span class='bi bi-cart'> CART</span>")
       .click(function () {
         window.location.href = "http://localhost:8080/checkout";
       });

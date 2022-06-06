@@ -15,11 +15,11 @@ const orderItems = (items) => {
   <div class="add">
   <button type="button" class="btn btn-danger">Remove</button>
   <div>
-  $${items.price/100}
+  $${items.price / 100}
   </div>
   <div class="button">
   <button id="plus">+</button>
-  <input type="number" value="0" id="input" />
+  <input type="number" value="0" min="0" max="10" id="input" />
   <button id="minus">−</button>
   </div>
   </div>
@@ -29,7 +29,7 @@ const orderItems = (items) => {
   $("#food-list").append(menuTemplate);
 };
 const loadmenu = () => {
-  $('#food-list').empty()
+  $("#food-list").empty();
   $.get("http://localhost:8080/api/food_items/checkout", (res) => {
     console.log("res", res);
     for (let key of res.orderItems) {
@@ -38,5 +38,20 @@ const loadmenu = () => {
     }
   });
 };
-loadmenu()
+loadmenu();
 
+$(document).ready(() => {
+  $("#plus").click(function () {
+    console.log("clicked");
+    num = parseInt($("#input").val());
+    $("#input").val(num + 1);
+  });
+});
+
+$(document).ready(() => {
+  $("#minus").click(function () {
+    console.log("clicked");
+    num = parseInt($("#input").val());
+    $("#input").val(num - 1);
+  });
+});
