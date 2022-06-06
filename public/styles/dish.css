@@ -24,6 +24,7 @@ border: solid black;
 
 .add{
   justify-content: space-around;
+  align-items: center;
   display: flex;
   border: solid black;
   flex-direction: column;
@@ -37,6 +38,13 @@ border: solid black;
 
 #input{
   width: 50px;
+  appearance: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .content{
