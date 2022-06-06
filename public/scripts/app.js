@@ -1,5 +1,9 @@
 // Client facing scripts here
 
+
+
+
+
 const menuItems = (items) => {
   const menuTemplate = `
   <article class="food">
@@ -33,35 +37,37 @@ const loadmenu = () => {
   $("#food-list").empty();
   $.get("http://localhost:8080/api/food_items", (res) => {
     for (let key of res.foodItems) {
-      menuItems(key);
+  menuItems(key);
     }
   });
+
 };
 loadmenu();
 
-$(document).ready(() => {
-
+  $(window).on('load', function() {
   $("#plus").click(() => {
-    console.log("clicked");
+    // console.log("clicked");
   num = parseInt($("#input").val());
-  if(num < 9){
+  if(num < 10){
   console.log('num', num);
   $("#input").val(num + 1);
   }
   });
-
-
-});
-
-$(document).ready(() => {
-   $("#minus").click(() => {
-    console.log("clicked");
+ $("#minus").click(() => {
+    // console.log("clicked");
   num = parseInt($("#input").val());
     if(num > 0){
   console.log('num -', num);
   $("#input").val(num - 1);
     }
   });
-})
+});
 
 
+
+$(window).on('load',() => {
+$(".btn-danger").click(() => {
+
+console.log("clicked add cart");
+});
+});
