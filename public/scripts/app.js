@@ -1,6 +1,6 @@
+
 // Client facing scripts here
 const cart = {};
-
 $(document).ready(function () {
   const loadmenu = () => {
     $("#food-list").empty();
@@ -87,6 +87,8 @@ $(document).ready(function () {
   const updateCart = (cart) => {
     let food;
     let total = 0;
+    let cookTime = 0; 
+    
     $.get("/api/food_items").then((res) => {
       food = res;
 
@@ -117,7 +119,9 @@ $(document).ready(function () {
 
 `);
             container.append($element);
-
+            
+            cookTime += item.cooking_time * cart[key];
+            console.log('cookTime', cookTime);
             total += (item.price * cart[key]) / 100;
           }
         }
@@ -135,5 +139,8 @@ $(document).ready(function () {
       box.append($ele);
     });
   };
+  
+
 });
+
 
