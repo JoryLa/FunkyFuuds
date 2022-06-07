@@ -28,30 +28,3 @@ const orderItems = (items) => {
   `;
   $("#food-list").append(menuTemplate);
 };
-const loadmenu = () => {
-  $("#food-list").empty();
-  $.get("http://localhost:8080/api/food_items/checkout", (res) => {
-    console.log("res", res);
-    for (let key of res.orderItems) {
-      console.log("key", key);
-      orderItems(key);
-    }
-  });
-};
-loadmenu();
-
-$(document).ready(() => {
-  $("#plus").click(function () {
-    console.log("clicked");
-    num = parseInt($("#input").val());
-    $("#input").val(num + 1);
-  });
-});
-
-$(document).ready(() => {
-  $("#minus").click(function () {
-    console.log("clicked");
-    num = parseInt($("#input").val());
-    $("#input").val(num - 1);
-  });
-});

@@ -15,7 +15,7 @@ module.exports = (db) => {
     databaseQueries.getAllItems(db)
       .then(data => {
         const foodItems = data;
-        res.json({ foodItems });
+        res.json( foodItems );
       })
       .catch(err => {
         res
