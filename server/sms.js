@@ -3,6 +3,8 @@ const authToken = '71893bf6da812222b3662db4799a8b28';
 const client = require('twilio')(accountSid, authToken);
 //const updateCart = require('./app');
 //alert(cookTime);
+
+const sendSMS = () => {
 //Customer
 client.messages
   .create({
@@ -19,4 +21,7 @@ client.messages
      from: '+19282235684',
      to: '+17783208267', 
    })
-  .then(message => console.log(message.sid));
+  .then(message => console.log(message.sid))
+};
+
+module.exports = {sendSMS};

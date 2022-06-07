@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const databaseQueries = require('../server/database');
+const {sendSMS} = require('../server/sms');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -36,6 +37,15 @@ module.exports = (db) => {
         .json({ error: err.message });
       });
   });
+
+  router.post('/', (req, res) => {
+    databaseQueries.addItemsToOrder(db, {user_id, item_id, quantity})
+    .then(data => {
+      const orderItems = data;
+      sendSMS(orderItems);
+
+    })
+  })  
 
 
   return router;
