@@ -50,24 +50,14 @@ $(document).ready(function () {
 
   loadmenu();
 
-  // $(".cart").click((res, req) => {
-  //   cart;
-  //   console.log("cart", cart);
-  //   console.log("[0]", cart[1]);
-  // });
-
   $("#food-list").on("click", ".plus", function () {
-    // console.log("clicked");
     const id = $(this).attr("data-key");
     if (!cart[id]) {
       cart[id] = 0;
     }
     cart[id]++;
-    // console.log(cart);
-    // console.log(id)
     num = parseInt($(this).parent().find(".input").val());
     if (num < 10) {
-      // console.log("num", num);
       $(this)
         .parent()
         .find(".input")
@@ -77,7 +67,6 @@ $(document).ready(function () {
   });
 
   $("#food-list").on("click", ".minus", function () {
-    // console.log("clicked");
     const id = $(this).attr("data-key");
 
     if (!cart[id]) {
@@ -85,10 +74,8 @@ $(document).ready(function () {
     }
     cart[id]--;
 
-    // console.log(cart)
     num = parseInt($(this).parent().find(".input").val());
     if (num > 0) {
-      // console.log("num -", num);
       $(this)
         .parent()
         .find(".input")
@@ -99,35 +86,54 @@ $(document).ready(function () {
 
   const updateCart = (cart) => {
     let food;
+    let total = 0;
     $.get("/api/food_items").then((res) => {
       food = res;
-      // console.log("food", food);
 
+      const box = $(".outsideCart");
+      $(".order").empty();
       const container = $(".cart");
       container.empty();
-      // console.log("cart", cart);
       for (let key in cart) {
         for (let item of food) {
-          // console.log("item",item)
           if (item.id == key) {
             const $element = $(`
-<div> ${item.item} </div>
-<div> ${item.price} </div>
-<div> ${item.description} </div>
 
-      `);
+<div class="checkout">
+<div class="name">
+<p> ${item.item}
+</p>
+</div>
+<div class="qty"> QTY
+<p> ${cart[key]}
+</p>
+</div>
+<div class="price"> Price
+<p> ${(item.price * cart[key]) / 100}
+ </p>
+ </div>
+</div>
+
+
+`);
             container.append($element);
+
+            total += (item.price * cart[key]) / 100;
           }
         }
-        // console.log("food for me", food);
       }
+      const $ele = $(`
+<div class="order">
+      <p>TAX: Cash or Crypto only on pick-up 🤔</p>
+      <div>Order total: $${total}</div>
+      <div class="checkoutButton">
+        <button type="button" class="btn btn-primary">Order</button>
+      </div>
+    </div>
+    `);
+
+      box.append($ele);
     });
   };
 });
 
-// NAME ---------- QTY --------- Price
-//Funky burger      2             $40
-//Pork              3              $9
-
-//    Total
-//   $49

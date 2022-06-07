@@ -57,8 +57,50 @@ input::-webkit-inner-spin-button {
 }
 
 .cart{
-
+  margin: 20px;
+  display: flex;
   border: solid black;
   height: 50px;
-  width: 50px;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.checkout{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+}
+
+.name{
+display: flex;
+flex-direction: column;
+white-space: normal;
+width: 300px;
+border: solid black;
+}
+
+.qty{
+  display: flex;
+  flex-direction: column;
+}
+
+.price{
+  display: flex;
+  flex-direction: column;
+}
+
+.outsideCart{
+  margin: 20px;
+  display: flex;
+  border: solid black;
+  height: 50px;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.order{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

@@ -7,7 +7,7 @@ const header = () => {
   </div>
   <div class="extra">
     <div class="header">
-      <p class="name"><b><a href='' target="_blank">FUNKY</a></b>FUUDS <br /> </p>
+      <p class="navName"><b><a href='' target="_blank">FUNKY</a></b>FUUDS <br /> </p>
       <p>won't be beet</p>
     </div>
   <div class="navright">
