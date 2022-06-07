@@ -137,15 +137,19 @@ $(document).ready(function () {
     `);
 
       box.append($ele);
+    $(".checkoutButton").on("click" , function () {
+    // alert("hello mister")
+    $.ajax({
+      method: "POST",
+      url: "../routes/food_items",
+      data: cart,
+      success: console.log("smell my finger")
+    });
+  });
     });
   };
 
-  $("btn-primary").on("click", function () {
-    $.ajax({
-      method: "POST",
-      url: "../routes/sms"
-    });
-  });
+
 
 
 });
