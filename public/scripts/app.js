@@ -1,5 +1,6 @@
 // Client facing scripts here
 const cart = {};
+
 $(document).ready(function () {
   const loadmenu = () => {
     $("#food-list").empty();
