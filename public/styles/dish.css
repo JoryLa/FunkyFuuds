@@ -97,10 +97,12 @@ border: solid black;
   height: 50px;
   height: fit-content;
   flex-direction: column;
+
 }
 
 .order{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  cursor: url('/docs/blobhead.png'), auto;
 }
