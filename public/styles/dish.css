@@ -55,3 +55,10 @@ input::-webkit-inner-spin-button {
   white-space: normal;
 
 }
+
+.cart{
+
+  border: solid black;
+  height: 50px;
+  width: 50px;
+}
