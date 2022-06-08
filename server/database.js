@@ -51,11 +51,12 @@ const saveCart =  function(db, {user_id, item_id, quantity}) {
 exports.saveCart = saveCart;
 
 
-const getCookTimeByOrderId = (db, user_id) => {
+const getCookTimeByOrderId = (db) => {
   return db
   // .query(`SELECT SUM(items.cooking_time*orders.quantity) FROM items JOIN orders ON items.id = orders.item_id;`)
-  .query(`SELECT SUM(orders.quantity * items.cooking_time) FROM orders JOIN items ON orders.item_id = items.id JOIN users ON users.id = orders.user_id WHERE users.id = $1;`, [user_id])
+  .query(`SELECT SUM(orders.quantity * items.cooking_time) FROM orders JOIN items ON orders.item_id = items.id;`)
   .then((result) => {
+    console.log("inside the function declaration", result.rows);
     return result.rows;
   })
   .catch((err) => {

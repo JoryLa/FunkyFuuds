@@ -11,7 +11,9 @@ const databaseQueries = require('../server/database');
 const sms = require('../server/sms');
 const session = require('express-session');
 
+
 router.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
+
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -52,7 +54,12 @@ module.exports = (db) => {
       const lineItem = {user_id, item_id, quantity}
       databaseQueries.saveCart(db, lineItem);
     }
-    databaseQueries.getCookTimeByOrderId(db, user_id);
+    databaseQueries.getCookTimeByOrderId(db)
+    .then(data => {
+      console.log("data, promise result", data[0].sum);
+        // const cooktime = data[0].sum;
+        // return sms.sendSMS('+17783208267', `Hi there! Your order will be ready in ${cooktime} minutes!`)
+      })
     // const cooktime2 = databaseQueries.getCookTimeByOrderId(db, user_id);
     // console.log(cooktime2);
   })
@@ -65,9 +72,6 @@ module.exports = (db) => {
     //   console.log(res);
     //   res.json({});
     // })
-
-
-
 return router;
 };
 
