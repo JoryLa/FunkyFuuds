@@ -1,3 +1,4 @@
+
 // GET ALL ITEMS IN A MENU
 
 const getAllItems = (db) => {
@@ -29,10 +30,23 @@ exports.getOrderByUser = getOrderByUser;
 
 // ADD ITEM TO THE CART
 
-const addItemToOrder =  function(db, {user_id, item_id, quantity}) {
-  const values = [user_id, item_id, quantity];
+const saveCart =  function(db, {user_id, item_id, quantity}) {
+  const values = [user_id , item_id, quantity];
   return db
-  .query(`INSERT INTO orders (user_id, item_id, quantity) VALUES ($1, $2, $3) RETURNING *`, [values]);
+  .query(`INSERT INTO orders (user_id, item_id, quantity) VALUES 
+  ($1, $2, $3)`, values)
+  
+//   .then((result) => {
+//     return result.rows;
+//   })
+//   .then(data => {
+//     //const orderItems = data;
+//     return sms.sendSMS('+17783208267', 'hello!')
+//   })
+//   .then((res) => {
+//     console.log(res);
+//     res.json({});
+//   })
 };
 
-exports.addItemToOrder = addItemToOrder;
+exports.saveCart = saveCart;

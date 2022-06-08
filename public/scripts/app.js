@@ -138,12 +138,13 @@ $(document).ready(function () {
 
       box.append($ele);
     $(".checkoutButton").on("click" , function () {
+  
     // alert("hello mister")
     $.ajax({
       method: "POST",
-      url: "../routes/food_items",
+      url: "/api/food_items/order",
       data: cart,
-      success: console.log("smell my finger")
+      success: console.log("cart", cart)
     });
   });
     });

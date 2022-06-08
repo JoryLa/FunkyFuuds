@@ -6,17 +6,20 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const databaseQueries = require('../server/database');
-const {sendSMS} = require('../server/sms');
+const sms = require('../server/sms');
+const session = require('express-session');
+
+router.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    console.log('req.session.user_id', req.session.user_id);
+    console.log('req.session.user_id', req.session);
     databaseQueries.getAllItems(db)
       .then(data => {
         const foodItems = data;
-        res.json( foodItems );
+        res.json(foodItems);
       })
       .catch(err => {
         res
@@ -25,33 +28,52 @@ module.exports = (db) => {
       });
   });
 
-  router.get("/checkout", (req, res) => {
-    databaseQueries.getOrderByUser(db)
-      .then(data => {
-        const orderItems = data;
-        res.json({ orderItems });
-      })
-      .catch(err => {
-        res
-        .status(500)
-        .json({ error: err.message });
-      });
-  });
+  // router.get("/checkout", (req, res) => {
+  //   databaseQueries.getOrderByUser(db)
+  //     .then(data => {
+  //       const orderItems = data;
+  //       res.json({ orderItems });
+  //     })
+  //     .catch(err => {
+  //       res
+  //       .status(500)
+  //       .json({ error: err.message });
+  //     });
+  // });
 
-  router.post('/', (req, res) => {
-    databaseQueries.addItemsToOrder(db, {user_id, item_id, quantity})
-    .then(data => {
-      const orderItems = data;
-      sendSMS(orderItems);
+  router.post('/order', (req, res) => {
+    console.log('req.session.user_id', req.session.user_id);
+    const cart = req.body;
+    const user_id = req.session.user_id;
+    console.log('req.body)', req.body);
+    for (const line in cart) {
+      const item_id = line;
+      const quantity = cart[line];
+      const lineItem = { user_id, item_id, quantity }
+      databaseQueries.saveCart(db, lineItem)
+    }
+  })
+    // databaseQueries.saveCart(db,)
+    // .then(data => {
+    //   const orderItems = data;
+    //   return sms.sendSMS('+17783208267', 'hello!')
+    // })
+    // .then((res) => {
+    //   console.log(res);
+    //   res.json({});
+    // })
 
-    })
-  })  
 
 
-  return router;
+return router;
 };
 
-
+// for (const line in cart) {
+//   const item_id = line;
+//   const quantity = cart[line];
+//   const lineItem = { user_id, item_id, quantity}
+//   databaseQueries.saveCart(db, lineItem)
+// }
 
 
 
