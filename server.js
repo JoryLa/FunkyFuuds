@@ -67,11 +67,11 @@ app.listen(PORT, () => {
 
 // // do this instead
 app.get('/user/:id', (req, res) => {
-  console.log('change user id', req.params.id)
-  console.log('req.session', req.session)
+  // console.log('change user id', req.params.id)
+  // console.log('req.session', req.session)
 //   // using encrypted cookies
   req.session.user_id = req.params.id;
-  console.log('req.session.user_id', req.session.user_id)
+  //console.log('req.session.user_id', req.session.user_id)
 
 //   // or using plain-text cookies
   res.cookie('user_id', req.params.id);

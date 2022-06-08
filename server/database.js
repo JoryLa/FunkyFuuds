@@ -33,9 +33,8 @@ exports.getOrderByUser = getOrderByUser;
 const saveCart =  function(db, {user_id, item_id, quantity}) {
   const values = [user_id , item_id, quantity];
   return db
-  .query(`INSERT INTO orders (user_id, item_id, quantity) VALUES 
+  .query(`INSERT INTO orders (user_id, item_id, quantity) VALUES
   ($1, $2, $3)`, values)
-  
 //   .then((result) => {
 //     return result.rows;
 //   })
@@ -50,3 +49,18 @@ const saveCart =  function(db, {user_id, item_id, quantity}) {
 };
 
 exports.saveCart = saveCart;
+
+
+const getCookTimeByOrderId = (db, user_id) => {
+  return db
+  // .query(`SELECT SUM(items.cooking_time*orders.quantity) FROM items JOIN orders ON items.id = orders.item_id;`)
+  .query(`SELECT SUM(orders.quantity * items.cooking_time) FROM orders JOIN items ON orders.item_id = items.id JOIN users ON users.id = orders.user_id WHERE users.id = $1;`, [user_id])
+  .then((result) => {
+    return result.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+};
+
+exports.getCookTimeByOrderId = getCookTimeByOrderId;
