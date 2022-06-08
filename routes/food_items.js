@@ -15,7 +15,7 @@ router.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    console.log('req.session.user_id', req.session);
+    //console.log('req.session.user_id', req.session);
     databaseQueries.getAllItems(db)
       .then(data => {
         const foodItems = data;
@@ -42,16 +42,19 @@ module.exports = (db) => {
   // });
 
   router.post('/order', (req, res) => {
-    console.log('req.session.user_id', req.session.user_id);
-    const cart = req.body;
+    //console.log('req.session.user_id', req.session.user_id);
+    let cart = req.body;
     const user_id = req.session.user_id;
-    console.log('req.body)', req.body);
+    //console.log('req.body)', req.body);
     for (const line in cart) {
       const item_id = line;
       const quantity = cart[line];
-      const lineItem = { user_id, item_id, quantity }
-      databaseQueries.saveCart(db, lineItem)
+      const lineItem = {user_id, item_id, quantity}
+      databaseQueries.saveCart(db, lineItem);
     }
+    databaseQueries.getCookTimeByOrderId(db, user_id);
+    // const cooktime2 = databaseQueries.getCookTimeByOrderId(db, user_id);
+    // console.log(cooktime2);
   })
     // databaseQueries.saveCart(db,)
     // .then(data => {
