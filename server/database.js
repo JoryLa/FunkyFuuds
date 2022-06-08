@@ -30,11 +30,27 @@ exports.getOrderByUser = getOrderByUser;
 
 // ADD ITEM TO THE CART
 
-const saveCart =  function(db, {user_id, item_id, quantity}) {
-  const values = [user_id , item_id, quantity];
-  return db
-  .query(`INSERT INTO orders (user_id, item_id, quantity) VALUES
-  ($1, $2, $3)`, values)
+const saveCart =  function(db, cart, user_id) {
+  const beginningOfQuery = `INSERT INTO orders (user_id, item_id, quantity) VALUES `
+  let endQuery = '';
+  for (const line in cart) {
+    const item_id = line;
+    const quantity = cart[line];
+    //const lineItem = {user_id, item_id, quantity}
+    const values = [user_id , item_id, quantity];
+    const newItem = `(${user_id}, ${item_id}, ${quantity}),`;
+    console.log('newItem:', newItem);
+    endQuery += newItem;
+  // return db.query(`INSERT INTO orders (user_id, item_id, quantity) VALUES
+  // ($1, $2, $3),
+  // ($1, $2, $3)`, values)
+  
+  }
+  endQuery = endQuery.substring(0, endQuery.length -1);
+  const finalQuery = beginningOfQuery + endQuery;
+  console.log('finalQuery', finalQuery);
+  return db.query(finalQuery);
+  //return 'heloooooo';
 //   .then((result) => {
 //     return result.rows;
 //   })
@@ -54,11 +70,20 @@ exports.saveCart = saveCart;
 const getCookTimeByOrderId = (db) => {
   return db
   // .query(`SELECT SUM(items.cooking_time*orders.quantity) FROM items JOIN orders ON items.id = orders.item_id;`)
-  .query(`SELECT SUM(orders.quantity * items.cooking_time) FROM orders JOIN items ON orders.item_id = items.id;`)
+  .query('SELECT SUM(orders.quantity * items.cooking_time) FROM orders JOIN items ON orders.item_id = items.id;')
+  
   .then((result) => {
-    console.log("inside the function declaration", result.rows);
+    console.log("inside the function declaration, result", result);
     return result.rows;
   })
+  // .then(() => {
+  //   db.query('SELECT * FROM orders;')
+  //   .then((result) => {
+  //     console.log('second query orders:  ', result.rows);
+  //     return result.rows;
+  //   })
+
+  //})
   .catch((err) => {
     console.log(err.message);
   });

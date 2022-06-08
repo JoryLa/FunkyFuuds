@@ -48,18 +48,17 @@ module.exports = (db) => {
     let cart = req.body;
     const user_id = req.session.user_id;
     //console.log('req.body)', req.body);
-    for (const line in cart) {
-      const item_id = line;
-      const quantity = cart[line];
-      const lineItem = {user_id, item_id, quantity}
-      databaseQueries.saveCart(db, lineItem);
-    }
-    databaseQueries.getCookTimeByOrderId(db)
-    .then(data => {
-      console.log("data, promise result", data[0].sum);
-        // const cooktime = data[0].sum;
-        // return sms.sendSMS('+17783208267', `Hi there! Your order will be ready in ${cooktime} minutes!`)
-      })
+
+    databaseQueries.saveCart(db, cart, user_id)
+    .then((result) => {
+      databaseQueries.getCookTimeByOrderId(db)
+      console.log(result.rows[0]);
+    })
+    // .then(data => {
+    //   // console.log("data, promise result", data[0].sum);
+    //     // const cooktime = data[0].sum;
+    //     // return sms.sendSMS('+17783208267', `Hi there! Your order will be ready in ${cooktime} minutes!`)
+    //   })
     // const cooktime2 = databaseQueries.getCookTimeByOrderId(db, user_id);
     // console.log(cooktime2);
   })
