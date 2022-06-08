@@ -66,9 +66,9 @@ $(document).ready(function () {
     if (cart[id] === 10) {
       $(this).parent().find(".plus").prop("disabled", true);
     }
-    if(cart[id] === 9){
-      $(".plus").prop("disabled", false);
-    }
+    // if(cart[id] === 9){
+    //   $(".plus").prop("disabled", false);
+    // }
 
     updateCart(cart);
   });
@@ -88,7 +88,7 @@ $(document).ready(function () {
         .find(".input")
         .val(num - 1);
     }
-    if (num == 0) {
+    if (cart[id] === 0) {
       $(this).parent().find(".minus").prop("disabled", true)
     }
     // .change();
