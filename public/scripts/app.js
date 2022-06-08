@@ -50,23 +50,27 @@ $(document).ready(function () {
 
   loadmenu();
 
-  $("#food-list").on("click", ".plus", function () {
+  $("#food-list").on("click", ".plus", function (event) {
     const id = $(this).attr("data-key");
     if (!cart[id]) {
       cart[id] = 0;
     }
     cart[id]++;
     num = parseInt($(this).parent().find(".input").val());
+    if (num === 10) {
+      event.preventDefault();
+    }
     if (num < 10) {
       $(this)
         .parent()
         .find(".input")
         .val(num + 1);
     }
+
     updateCart(cart);
   });
 
-  $("#food-list").on("click", ".minus", function () {
+  $("#food-list").on("click", ".minus", function (event) {
     const id = $(this).attr("data-key");
 
     if (!cart[id]) {
@@ -80,6 +84,8 @@ $(document).ready(function () {
         .parent()
         .find(".input")
         .val(num - 1);
+    } else {
+      event.preventDefault();
     }
     updateCart(cart);
   });
@@ -137,20 +143,15 @@ $(document).ready(function () {
     `);
 
       box.append($ele);
-    $(".checkoutButton").on("click" , function () {
-  
-    // alert("hello mister")
-    $.ajax({
-      method: "POST",
-      url: "/api/food_items/order",
-      data: cart,
-      success: console.log("cart", cart)
-    });
-  });
+      $(".checkoutButton").on("click", function () {
+        // alert("hello mister")
+        $.ajax({
+          method: "POST",
+          url: "/api/food_items/order",
+          data: cart,
+          success: console.log("cart", cart),
+        });
+      });
     });
   };
-
-
-
-
 });
