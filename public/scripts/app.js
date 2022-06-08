@@ -32,7 +32,7 @@ $(document).ready(function () {
         </div>
         <div class="button">
           <button class="plus" data-key="${item.id}">+</button>
-          <input type="number" value="0" min="0" max="10" class="input" />
+          <input type="number" value="0" readonly="readyonly" class="input" />
           <button class="minus" data-key="${item.id}">−</button>
         </div>
       </div>
@@ -50,29 +50,32 @@ $(document).ready(function () {
 
   loadmenu();
 
-  $("#food-list").on("click", ".plus", function (event) {
+  $("#food-list").on("click", ".plus", function () {
     const id = $(this).attr("data-key");
     if (!cart[id]) {
       cart[id] = 0;
     }
     cart[id]++;
     num = parseInt($(this).parent().find(".input").val());
-    if (num === 10) {
-      event.preventDefault();
-    }
     if (num < 10) {
       $(this)
         .parent()
         .find(".input")
         .val(num + 1);
     }
+    if (cart[id] === 10) {
+      $(this).parent().find(".plus").prop("disabled", true);
+    }
+    if(cart[id] === 9){
+      $(".plus").prop("disabled", false);
+    }
 
     updateCart(cart);
   });
 
-  $("#food-list").on("click", ".minus", function (event) {
+  $("#food-list").on("click", ".minus", function () {
     const id = $(this).attr("data-key");
-
+    console.log(cart[id]);
     if (!cart[id]) {
       cart[id] = 0;
     }
@@ -84,9 +87,11 @@ $(document).ready(function () {
         .parent()
         .find(".input")
         .val(num - 1);
-    } else {
-      event.preventDefault();
     }
+    if (num == 0) {
+      $(this).parent().find(".minus").prop("disabled", true)
+    }
+    // .change();
     updateCart(cart);
   });
 
@@ -103,7 +108,9 @@ $(document).ready(function () {
       const container = $(".cart");
       container.empty();
       for (let key in cart) {
+        // console.log("key", key);
         for (let item of food) {
+          // console.log("item", item);
           if (item.id == key) {
             const $element = $(`
 
@@ -125,9 +132,11 @@ $(document).ready(function () {
 
 `);
             container.append($element);
-
+            if (cart[key] === 0) {
+              $element.empty();
+            }
             cookTime += item.cooking_time * cart[key];
-            console.log("cookTime", cookTime);
+            // console.log("cookTime", cookTime);
             total += (item.price * cart[key]) / 100;
           }
         }

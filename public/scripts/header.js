@@ -11,7 +11,7 @@ const header = () => {
       <p>won't be beet</p>
     </div>
   <div class="navright">
-  <button type="button"  class="btn btn-warning"></button>
+  <button type="button"  <span class='bi bi-cart'> CART</span></button>
   </div>
 </nav>
 </header>
@@ -26,18 +26,23 @@ const loadHeader = () => {
 $(document).ready(function () {
   loadHeader();
 
-  if (window.location.pathname === "/checkout") {
-    $(".btn.btn-warning")
-      .text("Home/Menu")
-      .click(function () {
-        window.location.href = "http://localhost:8080/";
-      });
-  }
-  if (window.location.pathname === "/") {
-    $(".btn.btn-warning")
-      .append("<span class='bi bi-cart'> CART</span>")
-      .click(function () {
-        window.location.href = "http://localhost:8080/checkout";
-      });
-  }
+  $(".outsideCart").hide();
+  $("#navbar").on("click", ".bi.bi-cart", function () {
+    $(".outsideCart").slideToggle();
+  });
 });
+
+// if (window.location.pathname === "/checkout") {
+//   $(".btn.btn-warning")
+//     .text("Home/Menu")
+//     .click(function () {
+//       window.location.href = "http://localhost:8080/";
+//     });
+// }
+// if (window.location.pathname === "/") {
+//   $(".btn.btn-warning")
+//     .append("<span class='bi bi-cart'> CART</span>")
+//     .click(function () {
+//       window.location.href = "http://localhost:8080/checkout";
+//     });
+// }
