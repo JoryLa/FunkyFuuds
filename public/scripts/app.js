@@ -66,9 +66,9 @@ $(document).ready(function () {
     if (cart[id] === 10) {
       $(this).parent().find(".plus").prop("disabled", true);
     }
-    // if(cart[id] === 9){
-    //   $(".plus").prop("disabled", false);
-    // }
+    if ($(this).parent().find(".minus").prop("disabled", true)) {
+      $(this).parent().find(".minus").prop("disabled", false)
+    }
 
     updateCart(cart);
   });
@@ -77,11 +77,12 @@ $(document).ready(function () {
     const id = $(this).attr("data-key");
     console.log(cart[id]);
     if (!cart[id]) {
-      cart[id] = 0;
+      cart[id] = 1;
     }
     cart[id]--;
 
     num = parseInt($(this).parent().find(".input").val());
+    console.log("num",num)
     if (num > 0) {
       $(this)
         .parent()
@@ -91,7 +92,10 @@ $(document).ready(function () {
     if (cart[id] === 0) {
       $(this).parent().find(".minus").prop("disabled", true)
     }
-    // .change();
+    if ($(this).parent().find(".plus").prop("disabled", true)) {
+      $(this).parent().find(".plus").prop("disabled", false)
+    }
+
     updateCart(cart);
   });
 
