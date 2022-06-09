@@ -67,7 +67,11 @@ $(document).ready(function () {
       $(this).parent().find(".plus").prop("disabled", true);
     }
     if ($(this).parent().find(".minus").prop("disabled", true)) {
+<<<<<<< HEAD
       $(this).parent().find(".minus").prop("disabled", false)
+=======
+      $(this).parent().find(".minus").prop("disabled", false);
+>>>>>>> frontend
     }
 
     updateCart(cart);
@@ -82,7 +86,7 @@ $(document).ready(function () {
     cart[id]--;
 
     num = parseInt($(this).parent().find(".input").val());
-    console.log("num",num)
+    console.log("num", num);
     if (num > 0) {
       $(this)
         .parent()
@@ -90,10 +94,10 @@ $(document).ready(function () {
         .val(num - 1);
     }
     if (cart[id] === 0) {
-      $(this).parent().find(".minus").prop("disabled", true)
+      $(this).parent().find(".minus").prop("disabled", true);
     }
     if ($(this).parent().find(".plus").prop("disabled", true)) {
-      $(this).parent().find(".plus").prop("disabled", false)
+      $(this).parent().find(".plus").prop("disabled", false);
     }
 
     updateCart(cart);
@@ -137,6 +141,7 @@ $(document).ready(function () {
 `);
             container.append($element);
 
+<<<<<<< HEAD
 
             if (cart[key] === 0) {
              $element.empty()
@@ -156,6 +161,20 @@ $(document).ready(function () {
             // if (keyByCart === 0){
             //   $(".outsideCart").hide();
             // }
+=======
+            if (cart[key] === 0) {
+              $element.empty();
+              delete cart[key];
+            }
+            // if (Object.keys(cart).length === 0) {
+            //   // $(".outsideCart").slideUp();
+            //   $(".checkoutButton").prop("disabled", true);
+            // }
+            console.log("cart", cart);
+            console.log("key", key);
+            console.log("cart[key]", cart[key]);
+
+>>>>>>> frontend
             cookTime += item.cooking_time * cart[key];
             // console.log("cookTime", cookTime);
             total += (item.price * cart[key]) / 100;
@@ -173,7 +192,11 @@ $(document).ready(function () {
     `);
 
       box.append($ele);
-      $(".checkoutButton").on("click", function () {
+      if (Object.keys(cart).length === 0) {
+         $(".outsideCart").slideUp();
+          $(".btn.btn-primary").prop("disabled", true);
+      }
+      $(".btn.btn-primary").on("click", function () {
         // alert("hello mister")
         $.ajax({
           method: "POST",
