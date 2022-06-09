@@ -39,16 +39,16 @@ const saveCart =  function(db, cart, user_id) {
     //const lineItem = {user_id, item_id, quantity}
     const values = [user_id , item_id, quantity];
     const newItem = `(${user_id}, ${item_id}, ${quantity}),`;
-    console.log('newItem:', newItem);
+    //console.log('newItem:', newItem);
     endQuery += newItem;
   // return db.query(`INSERT INTO orders (user_id, item_id, quantity) VALUES
   // ($1, $2, $3),
   // ($1, $2, $3)`, values)
-  
+
   }
   endQuery = endQuery.substring(0, endQuery.length -1);
   const finalQuery = beginningOfQuery + endQuery;
-  console.log('finalQuery', finalQuery);
+  //console.log('finalQuery', finalQuery);
   return db.query(finalQuery);
   //return 'heloooooo';
 //   .then((result) => {
@@ -69,24 +69,30 @@ exports.saveCart = saveCart;
 
 const getCookTimeByOrderId = (db) => {
   return db
-  // .query(`SELECT SUM(items.cooking_time*orders.quantity) FROM items JOIN orders ON items.id = orders.item_id;`)
   .query('SELECT SUM(orders.quantity * items.cooking_time) FROM orders JOIN items ON orders.item_id = items.id;')
-  
-  .then((result) => {
-    console.log("inside the function declaration, result", result);
-    return result.rows;
-  })
-  // .then(() => {
-  //   db.query('SELECT * FROM orders;')
-  //   .then((result) => {
-  //     console.log('second query orders:  ', result.rows);
-  //     return result.rows;
-  //   })
-
-  //})
-  .catch((err) => {
-    console.log(err.message);
-  });
+    .then((result) => {
+      console.log("inside the function declaration, result", result.rows[0].sum);
+      return result.rows[0].sum;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
 
 exports.getCookTimeByOrderId = getCookTimeByOrderId;
+
+const getOrderToRestaurant = (db, user_id) => {
+  return db
+  .query(`SELECT items.item AS name, orders.quantity AS quantity
+  FROM orders JOIN items ON orders.item_id = items.id JOIN users ON users.id = orders.user_id
+  WHERE user_id = $1 GROUP BY items.item, orders.quantity;`, [user_id])
+    .then((result) => {
+      //console.log("result.rows inside 2nd func", result);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.getOrderToRestaurant = getOrderToRestaurant;

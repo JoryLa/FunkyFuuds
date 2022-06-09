@@ -44,42 +44,32 @@ module.exports = (db) => {
   // });
 
   router.post('/order', (req, res) => {
-    //console.log('req.session.user_id', req.session.user_id);
     let cart = req.body;
     const user_id = req.session.user_id;
-    //console.log('req.body)', req.body);
 
     databaseQueries.saveCart(db, cart, user_id)
-    .then((result) => {
-      databaseQueries.getCookTimeByOrderId(db)
-      console.log(result.rows[0]);
-    })
-    // .then(data => {
-    //   // console.log("data, promise result", data[0].sum);
-    //     // const cooktime = data[0].sum;
-    //     // return sms.sendSMS('+17783208267', `Hi there! Your order will be ready in ${cooktime} minutes!`)
-    //   })
-    // const cooktime2 = databaseQueries.getCookTimeByOrderId(db, user_id);
-    // console.log(cooktime2);
+      .then((result) => {
+        databaseQueries.getCookTimeByOrderId(db)
+          .then(data => {
+            const cooktime = data;
+            // return sms.sendSMS('+17783208267', `Hi there! Your order will be ready in ${cooktime} minutes!`)
+          })
+        databaseQueries.getOrderToRestaurant(db, user_id)
+          .then(data => {
+            const orderForRestaurant = (data);
+            let array = [];
+            for (let item of orderForRestaurant) {
+              array.push(item.name);
+              array.push(item.quantity);
+            }
+            //return sms.sendSMS('+17783208267', `We got new order! ${array} for client #${user_id}`)
+          })
+      })
+
   })
-    // databaseQueries.saveCart(db,)
-    // .then(data => {
-    //   const orderItems = data;
-    //   return sms.sendSMS('+17783208267', 'hello!')
-    // })
-    // .then((res) => {
-    //   console.log(res);
-    //   res.json({});
-    // })
-return router;
+  return router;
 };
 
-// for (const line in cart) {
-//   const item_id = line;
-//   const quantity = cart[line];
-//   const lineItem = { user_id, item_id, quantity}
-//   databaseQueries.saveCart(db, lineItem)
-// }
 
 
 

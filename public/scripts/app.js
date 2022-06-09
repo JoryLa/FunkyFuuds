@@ -67,11 +67,7 @@ $(document).ready(function () {
       $(this).parent().find(".plus").prop("disabled", true);
     }
     if ($(this).parent().find(".minus").prop("disabled", true)) {
-<<<<<<< HEAD
-      $(this).parent().find(".minus").prop("disabled", false)
-=======
       $(this).parent().find(".minus").prop("disabled", false);
->>>>>>> frontend
     }
 
     updateCart(cart);
@@ -141,27 +137,6 @@ $(document).ready(function () {
 `);
             container.append($element);
 
-<<<<<<< HEAD
-
-            if (cart[key] === 0) {
-             $element.empty()
-            //  delete
-            }
-            // if (cart[key] === 0){
-            //   cart.remove(cart[key])
-            // }
-            // if ($element === $element.empty()){
-            //   $("cart").empty()
-            // }
-            console.log("cart",cart)
-            console.log("key", key)
-            console.log("cart[key]",cart[key])
-            // let keyByCart = key*key
-            // console.log("sum on cart[key]", cart[key])
-            // if (keyByCart === 0){
-            //   $(".outsideCart").hide();
-            // }
-=======
             if (cart[key] === 0) {
               $element.empty();
               delete cart[key];
@@ -174,7 +149,6 @@ $(document).ready(function () {
             console.log("key", key);
             console.log("cart[key]", cart[key]);
 
->>>>>>> frontend
             cookTime += item.cooking_time * cart[key];
             // console.log("cookTime", cookTime);
             total += (item.price * cart[key]) / 100;
