@@ -3,7 +3,7 @@ const cart = {};
 
 $(document).ready(function () {
   const loadmenu = () => {
-    $("#food-list").empty();
+    $(".food-list").empty();
     $.get("/api/food_items").then((res) => {
       renderMenu(res);
     });
@@ -41,7 +41,7 @@ $(document).ready(function () {
   };
 
   const renderMenu = function (items) {
-    const container = $("#food-list").empty();
+    const container = $(".food-list").empty();
     for (let item of items) {
       const element = createMenuItemElement(item);
       container.append(element);
@@ -50,7 +50,7 @@ $(document).ready(function () {
 
   loadmenu();
 
-  $("#food-list").on("click", ".plus", function () {
+  $(".food-list").on("click", ".plus", function () {
     const id = $(this).attr("data-key");
     if (!cart[id]) {
       cart[id] = 0;
@@ -73,7 +73,7 @@ $(document).ready(function () {
     updateCart(cart);
   });
 
-  $("#food-list").on("click", ".minus", function () {
+  $(".food-list").on("click", ".minus", function () {
     const id = $(this).attr("data-key");
     // console.log(cart[id]);
     if (!cart[id]) {
@@ -98,7 +98,6 @@ $(document).ready(function () {
 
     updateCart(cart);
   });
-
 
   const updateCart = (cart) => {
     let food;
@@ -145,7 +144,7 @@ $(document).ready(function () {
 
             cookTime += item.cooking_time * cart[key];
             total += (item.price * cart[key]) / 100;
-            console.log("cookTime",cookTime)
+            console.log("cookTime", cookTime);
           }
         }
       }
@@ -175,7 +174,7 @@ $(document).ready(function () {
 <p> Order has been placed and will be ready for pick-up in an estimated time of ${cookTime} minutes</p>
 </div>
 <div class="reset">
-<button type="button" class="btn btn-primary">Return to menu</button>
+<button type="button" id="return" class="btn btn-primary">Return to menu</button>
 </div>
 </article>
 `;
@@ -183,10 +182,15 @@ $(document).ready(function () {
 
       $(".btn.btn-primary").on("click", function () {
         $(".cart").empty();
-        $(".outsideCart").empty()
-        let feedMe = confirmation()
+        $(".outsideCart").empty();
+        let feedMe = confirmation();
         $(".outsideCart").append(feedMe);
-        console.log("cart", cart)
+        $(".plus").prop("disabled", true);
+        $(".minus").prop("disabled", true);
+        $("#return").on("click", function () {
+          location.reload();
+        });
+        console.log("cart", cart);
         // console.log("key", key)
         // console.log("cart[key]", cart[key])
         // confirm("Are you sure you want to order? Its going to cost you your health! Either way both buttons execute the order lol.")
