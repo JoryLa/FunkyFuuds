@@ -160,9 +160,7 @@ $(document).ready(function () {
 
       box.append($ele);
       console.log(total);
-      if ((total = NaN)) {
-        console.log("smell my finger");
-      }
+
       if (Object.keys(cart).length === 0) {
         $(".outsideCart").slideUp();
         $(".btn.btn-primary").prop("disabled", true);
@@ -171,7 +169,7 @@ $(document).ready(function () {
         return `
       <article class="article">
 <div class="yes">
-<p> Order has been placed and will be ready for pick-up in an estimated time of ${cookTime} minutes</p>
+<p> Order has been placed and will be ready for pick-up in an estimated time of</p>
 </div>
 <div class="reset">
 <button type="button" id="return" class="btn btn-primary">Return to menu</button>
@@ -181,6 +179,9 @@ $(document).ready(function () {
       };
 
       $(".btn.btn-primary").on("click", function () {
+        console.log(new Date());
+        console.log(new Date().toString());
+
         $(".cart").empty();
         $(".outsideCart").empty();
         let feedMe = confirmation();
@@ -190,7 +191,7 @@ $(document).ready(function () {
         $("#return").on("click", function () {
           location.reload();
         });
-        console.log("cart", cart);
+        // console.log("cart", cart);
         // console.log("key", key)
         // console.log("cart[key]", cart[key])
         // confirm("Are you sure you want to order? Its going to cost you your health! Either way both buttons execute the order lol.")
