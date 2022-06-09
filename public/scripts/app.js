@@ -31,9 +31,9 @@ $(document).ready(function () {
           $${item.price / 100}
         </div>
         <div class="button">
-          <button class="plus" data-key="${item.id}">+</button>
+          <button id="plus" class="btn" data-key="${item.id}">+</button>
           <input type="number" value="0" readonly="readyonly" class="input" />
-          <button class="minus" data-key="${item.id}">−</button>
+          <button id="minus" class="btn" data-key="${item.id}">−</button>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
 
   loadmenu();
 
-  $(".food-list").on("click", ".plus", function () {
+  $(".food-list").on("click", "#plus", function () {
     const id = $(this).attr("data-key");
     if (!cart[id]) {
       cart[id] = 0;
@@ -64,16 +64,16 @@ $(document).ready(function () {
         .val(num + 1);
     }
     if (cart[id] === 10) {
-      $(this).parent().find(".plus").prop("disabled", true);
+      $(this).parent().find("#plus").prop("disabled", true);
     }
-    if ($(this).parent().find(".minus").prop("disabled", true)) {
-      $(this).parent().find(".minus").prop("disabled", false);
+    if ($(this).parent().find("#minus").prop("disabled", true)) {
+      $(this).parent().find("#minus").prop("disabled", false);
     }
 
     updateCart(cart);
   });
 
-  $(".food-list").on("click", ".minus", function () {
+  $(".food-list").on("click", "#minus", function () {
     const id = $(this).attr("data-key");
     // console.log(cart[id]);
     if (!cart[id]) {
@@ -90,10 +90,10 @@ $(document).ready(function () {
         .val(num - 1);
     }
     if (cart[id] === 0) {
-      $(this).parent().find(".minus").prop("disabled", true);
+      $(this).parent().find("#minus").prop("disabled", true);
     }
-    if ($(this).parent().find(".plus").prop("disabled", true)) {
-      $(this).parent().find(".plus").prop("disabled", false);
+    if ($(this).parent().find("#plus").prop("disabled", true)) {
+      $(this).parent().find("#plus").prop("disabled", false);
     }
 
     updateCart(cart);
@@ -169,7 +169,13 @@ $(document).ready(function () {
         return `
       <article class="article">
 <div class="yes">
-<p> Order has been placed and will be ready for pick-up in an estimated time of</p>
+<p> Order has been placed and will be ready for pick-up in an estimated time of:</p>
+<div id="timer">
+  <div id="days"></div>
+  <div id="hours"></div>
+  <div id="minutes"></div>
+  <div id="seconds"></div>
+</div>
 </div>
 <div class="reset">
 <button type="button" id="return" class="btn btn-primary">Return to menu</button>
@@ -179,15 +185,63 @@ $(document).ready(function () {
       };
 
       $(".btn.btn-primary").on("click", function () {
-        console.log(new Date());
-        console.log(new Date().toString());
+        let orderTime;
+        let whoopwhoop;
+        let data2;
+        // $.get("/order").then((res) =>{
+        //   orderTime = res
+        // for(let item in orderTime){
+        //   whoopwhoop = item.order_time
+
+        // }
+        console.log("I want my food baby!!!", whoopwhoop)
+        console.log("res", orderTime)
+
+        // })
+
+
+        function makeTimer() {
+
+          //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");
+            var endTime = new Date("29 April 2023 9:56:00 GMT+01:00");
+              endTime = (Date.parse(endTime) / 1000);
+            // console.log("end", endTime)
+              // var now = new Date();
+              // now = (Date.parse(now) / 1000);
+            // console.log(now)
+            let cookTime = 960
+            let now = $.now()
+            let readyTime = $.now() + cookTime
+            // console.log($.now() + cookTime)
+              let timeLeft = readyTime - now;
+          // console.log(timeLeft)
+              let days = Math.floor(timeLeft / 86400);
+              let hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+              let minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+              let seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+              if (hours < "10") { hours = "0" + hours; }
+              if (minutes < "10") { minutes = "0" + minutes; }
+              if (seconds < "10") { seconds = "0" + seconds; }
+
+              $("#days").html(days + "<span>Days</span>");
+              $("#hours").html(hours + "<span>Hours</span>");
+              $("#minutes").html(minutes + "<span>Minutes</span>");
+              $("#seconds").html(seconds + "<span>Seconds</span>");
+
+          }
+
+          setInterval(function() { makeTimer(); }, 1000);
+
+        // console.log(new Date());
+        // console.log(new Date().toString());
 
         $(".cart").empty();
         $(".outsideCart").empty();
         let feedMe = confirmation();
         $(".outsideCart").append(feedMe);
-        $(".plus").prop("disabled", true);
-        $(".minus").prop("disabled", true);
+        $("#plus").prop("disabled", true);
+        $("#minus").prop("disabled", true);
         $("#return").on("click", function () {
           location.reload();
         });
@@ -199,7 +253,9 @@ $(document).ready(function () {
           method: "POST",
           url: "/api/food_items/order",
           data: cart,
-          success: console.log("cart", cart),
+          success: (data, status, xhr) => {
+            data2 = data
+             }
         });
       });
     });

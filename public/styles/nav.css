@@ -3,7 +3,7 @@
   /* justify-content:space-between; */
   align-items: center;
   background-color: yellow;
-  border: solid black;
+  /* border: solid black; */
   position:relative;
   z-index: 1;
 
@@ -11,6 +11,7 @@
   Height: 120px;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  box-shadow: 0px 3px 3px black;
 }
 
 .navName{
@@ -29,7 +30,7 @@ a[href] {
   width: 100px;
   border: solid black;
   background-color: navy;
-border-radius: 0px 0px 0px 50px;
+  border-radius: 0px 0px 0px 50px;
 }
 
 .bi.bi-trash{

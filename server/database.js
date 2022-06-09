@@ -79,3 +79,18 @@ const getOrderToRestaurant = (db, user_id) => {
 };
 
 exports.getOrderToRestaurant = getOrderToRestaurant;
+
+// Retrieves order time from database
+const getOrderTime = (db, user_id) => {
+  return db
+  .query(`SELECT order_time FROM orders where user_id = $1 LIMIT 1;`, [user_id])
+    .then((result) => {
+      console.log('result.rows!!!!!!!!!!!!', result.rows[0].order_time);
+      return result.rows[0].order_time;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.getOrderTime = getOrderTime;
