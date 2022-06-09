@@ -51,9 +51,6 @@ app.use("/api/food_items", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  //const user = req.body;
-  //console.log('req.body', req.body);
-  // req.session.userId = user.id;
   res.render("index");
 });
 
@@ -65,17 +62,9 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-// // do this instead
+
 app.get('/user/:id', (req, res) => {
-  // console.log('change user id', req.params.id)
-  // console.log('req.session', req.session)
-//   // using encrypted cookies
   req.session.user_id = req.params.id;
-  //console.log('req.session.user_id', req.session.user_id)
-
-//   // or using plain-text cookies
   res.cookie('user_id', req.params.id);
-
-//   // send the user somewhere
   res.redirect('/');
   });
