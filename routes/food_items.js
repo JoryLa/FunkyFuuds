@@ -64,6 +64,7 @@ module.exports = (db) => {
               array.push(item.name);
               array.push(item.quantity);
             }
+            //databaseQueries.getOrderTime(db, user_id);
             //return sms.sendSMS('+17783208267', `We got new order! ${array} for client #${user_id}`)
           })
       })
