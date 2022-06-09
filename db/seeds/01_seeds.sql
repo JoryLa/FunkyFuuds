@@ -19,7 +19,7 @@ INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALU
   ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, '../../docs/fish.jpeg' ),
   ('Pork?', 'Your guess is as good as ours', 300, 5, '../../docs/pork.jpeg'),
   ('Seared burrito', 'Unexpected consequences', 600, 4, '../../docs/burrito.jpeg'),
-  ('Angry Perogies', 'Proceed with caution', 800, 8, '../../docs/burrito.jpeg'),
-  ('Furry Bagel', 'No questions asked', 250, 3, '../../docs/burrito.jpeg'),
-  ('Crunchy farmers wrap', 'For your dog maybe?', 150, 4, '../../docs/burrito.jpeg'),
-  ('Aged Crème Brulée', 'Chefs special', 300, 2, '../../docs/burrito.jpeg');
+  ('Angry Perogies', 'Proceed with caution', 800, 8, '../../docs/perogies.jpeg'),
+  ('Furry Bagel', 'No questions asked', 250, 3, '../../docs/bagel.jpeg'),
+  ('Crunchy farmers wrap', 'For your dog maybe?', 150, 4, '../../docs/wrap.jpeg'),
+  ('Aged Crème Brulée', 'Chefs special', 300, 2, '../../docs/creme_brulee.jpeg');
