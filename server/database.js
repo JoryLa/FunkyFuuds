@@ -71,7 +71,6 @@ const getOrderToRestaurant = (db, user_id) => {
   FROM orders JOIN items ON orders.item_id = items.id JOIN users ON users.id = orders.user_id
   WHERE user_id = $1 GROUP BY items.item, orders.quantity;`, [user_id])
     .then((result) => {
-      //console.log("result.rows inside 2nd func", result);
       return result.rows;
     })
     .catch((err) => {
