@@ -17,7 +17,7 @@ $(document).ready(function () {
       </div>
     </div>
     <div class="content">
-      <p> ${item.item}
+      <p class="itemName"> ${item.item}
       </p>
       <p class="description">
       <p> ${item.description}

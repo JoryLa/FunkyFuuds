@@ -11,23 +11,32 @@
 .box img{
   width: 100px;
   height: 100px;
-  border: solid black;
+  /* border: solid black; */
   object-fit: cover;
 }
 
 .dishname{
-  border: solid black;
+  /* border: solid black; */
+
 }
 
 .description{
-border: solid black;
+/* border: solid black; */
+
 }
 
+.content{
+  /* border: solid black; */
+  width: 60%;
+  height: 100px;
+  white-space: normal;
+
+}
 .add{
   justify-content: space-around;
   align-items: center;
   display: flex;
-  border: solid black;
+  /* border: solid black; */
   flex-direction: column;
   height: 100px;
 }
@@ -37,7 +46,7 @@ border: solid black;
   flex-direction: row;
 }
 
-#input{
+.input{
   width: 50px;
   appearance: none;
 }
@@ -48,13 +57,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.content{
-  border: solid black;
-  width: 60%;
-  height: 100px;
-  white-space: normal;
 
-}
 
 .cart{
   margin: 20px;
