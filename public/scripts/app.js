@@ -187,16 +187,17 @@ $(document).ready(function () {
       $(".btn.btn-primary").on("click", function () {
         let orderTime;
         let whoopwhoop;
-        $.get("/api/food_items").then((res) =>{
-          orderTime = res
-        for(let item in orderTime){
-          whoopwhoop = item.order_time
+        let data2;
+        // $.get("/order").then((res) =>{
+        //   orderTime = res
+        // for(let item in orderTime){
+        //   whoopwhoop = item.order_time
 
-        }
+        // }
         console.log("I want my food baby!!!", whoopwhoop)
         console.log("res", orderTime)
 
-        })
+        // })
 
 
         function makeTimer() {
@@ -252,7 +253,9 @@ $(document).ready(function () {
           method: "POST",
           url: "/api/food_items/order",
           data: cart,
-          success: console.log("party")
+          success: (data, status, xhr) => {
+            data2 = data
+             }
         });
       });
     });
