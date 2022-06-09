@@ -186,14 +186,14 @@ $(document).ready(function () {
 
       $(".btn.btn-primary").on("click", function () {
         let orderTime;
-        let shithead;
+        let whoopwhoop;
         $.get("/api/food_items").then((res) =>{
           orderTime = res
         for(let item in orderTime){
-          shithead = item.order_time
+          whoopwhoop = item.order_time
 
         }
-        console.log("I want my food baby!!!", shithead)
+        console.log("I want my food baby!!!", whoopwhoop)
         console.log("res", orderTime)
 
         })
@@ -252,7 +252,7 @@ $(document).ready(function () {
           method: "POST",
           url: "/api/food_items/order",
           data: cart,
-
+          success: console.log("party")
         });
       });
     });
