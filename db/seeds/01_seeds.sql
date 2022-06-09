@@ -23,8 +23,3 @@ INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALU
   ('Furry Bagel', 'No questions asked', 250, 3, '../../docs/burrito.jpeg'),
   ('Crunchy farmers wrap', 'For your dog maybe?', 150, 4, '../../docs/burrito.jpeg'),
   ('Aged Crème Brulée', 'Chefs special', 300, 2, '../../docs/burrito.jpeg');
-
-  -- INSERT INTO orders (user_id, item_id) VALUES
-  -- (2, 3),
-  -- (5, 4),
-  -- (6, 6)

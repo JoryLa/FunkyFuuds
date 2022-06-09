@@ -14,10 +14,10 @@ const session = require('express-session');
 
 router.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 } }));
 
+// MAIN PAGE ROUTE WHICH LOADS MENU ITEMS //
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    //console.log('req.session.user_id', req.session);
     databaseQueries.getAllItems(db)
       .then(data => {
         const foodItems = data;
@@ -42,6 +42,8 @@ module.exports = (db) => {
   //       .json({ error: err.message });
   //     });
   // });
+
+// ROUTE FOR ORDER ITEMS TO BE SENT VIA SMS //
 
   router.post('/order', (req, res) => {
     let cart = req.body;
@@ -70,18 +72,10 @@ module.exports = (db) => {
   return router;
 };
 
-
-
-
-
-
 // CREATE: adding the item to the cart
 // READ: the home page with the list of all the menu items
 // EDIT: modify the contents of the cart
 // DELETE: delete item from the checkout page
-
-
-
 
 
 //BROWSE//GET /funkyfuuds
