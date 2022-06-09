@@ -1,0 +1,51 @@
+.cart{
+  margin: 20px;
+  display: flex;
+  border: solid black;
+  height: 50px;
+  height: fit-content;
+  flex-direction: column;
+  background-color: pink;
+}
+
+.checkout{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+}
+
+.name{
+display: flex;
+flex-direction: column;
+white-space: normal;
+width: 300px;
+border: solid black;
+}
+
+.qty{
+  display: flex;
+  flex-direction: column;
+}
+
+.price{
+  display: flex;
+  flex-direction: column;
+}
+
+.outsideCart{
+  margin: 20px;
+  display: flex;
+  border: solid black;
+  height: 50px;
+  height: fit-content;
+  flex-direction: column;
+
+}
+
+.order{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* cursor: url('/docs/blobhead.png'), auto; */
+}

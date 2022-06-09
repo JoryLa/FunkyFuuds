@@ -99,6 +99,7 @@ $(document).ready(function () {
     updateCart(cart);
   });
 
+
   const updateCart = (cart) => {
     let food;
     let total = 0;
@@ -141,17 +142,10 @@ $(document).ready(function () {
               $element.empty();
               delete cart[key];
             }
-            // if (Object.keys(cart).length === 0) {
-            //   // $(".outsideCart").slideUp();
-            //   $(".checkoutButton").prop("disabled", true);
-            // }
-            console.log("cart", cart);
-            console.log("key", key);
-            console.log("cart[key]", cart[key]);
 
             cookTime += item.cooking_time * cart[key];
-            // console.log("cookTime", cookTime);
             total += (item.price * cart[key]) / 100;
+            console.log("cookTime",cookTime)
           }
         }
       }
@@ -166,12 +160,36 @@ $(document).ready(function () {
     `);
 
       box.append($ele);
-      if (Object.keys(cart).length === 0) {
-         $(".outsideCart").slideUp();
-          $(".btn.btn-primary").prop("disabled", true);
+      console.log(total);
+      if ((total = NaN)) {
+        console.log("smell my finger");
       }
+      if (Object.keys(cart).length === 0) {
+        $(".outsideCart").slideUp();
+        $(".btn.btn-primary").prop("disabled", true);
+      }
+      const confirmation = function () {
+        return `
+      <article class="article">
+<div class="yes">
+<p> Order has been placed and will be ready for pick-up in an estimated time of ${cookTime} minutes</p>
+</div>
+<div class="reset">
+<button type="button" class="btn btn-primary">Return to menu</button>
+</div>
+</article>
+`;
+      };
+
       $(".btn.btn-primary").on("click", function () {
-        // alert("hello mister")
+        $(".cart").empty();
+        $(".outsideCart").empty()
+        let feedMe = confirmation()
+        $(".outsideCart").append(feedMe);
+        console.log("cart", cart)
+        // console.log("key", key)
+        // console.log("cart[key]", cart[key])
+        // confirm("Are you sure you want to order? Its going to cost you your health! Either way both buttons execute the order lol.")
         $.ajax({
           method: "POST",
           url: "/api/food_items/order",

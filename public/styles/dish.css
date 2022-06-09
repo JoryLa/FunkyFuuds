@@ -63,6 +63,7 @@ input::-webkit-inner-spin-button {
   height: 50px;
   height: fit-content;
   flex-direction: column;
+  background-color: pink;
 }
 
 .checkout{
@@ -104,5 +105,22 @@ border: solid black;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  cursor: url('/docs/blobhead.png'), auto;
+  /* cursor: url('/docs/blobhead.png'), auto; */
+}
+
+/* .yes.btn-primary{
+  display: flex;
+  border: solid red;
+  justify-content: center;
+}
+
+.reset{
+  display: flex;
+  justify-content: center;
+} */
+
+.article{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
