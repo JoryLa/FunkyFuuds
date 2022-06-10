@@ -16,7 +16,7 @@ INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALU
   ('Funky Burger', 'Your favourite burger but funkier', 2000, 3, '../../docs/burger.jpeg'),
   ('Paralizing pizza', 'Do not test it', 3000, 10, '../../docs/pizza.jpeg'),
   ('Stuffed animal', 'Animal you stuff into yourself', 3000, 10, '../../docs/stuffed_animal.jpeg'),
-  ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, '../../docs/fish.jpeg' ),
+  ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, '../../docs/fish.jpeg'),
   ('Pork-o-holic', 'Your guess is as good as ours', 300, 5, '../../docs/pork.jpeg'),
   ('Seared burrito', 'Unexpected consequences', 600, 4, '../../docs/burrito.jpeg'),
   ('Angry Perogies', 'Proceed with caution', 800, 8, '../../docs/perogies.jpeg'),
