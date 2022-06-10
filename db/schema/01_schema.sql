@@ -27,9 +27,9 @@ CREATE TABLE orders (
   quantity INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE TABLE orders_by_users (
-  id SERIAL PRIMARY KEY NOT NULL,
-  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE
-);
+-- CREATE TABLE orders_by_users (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE
+-- );
 
 -- SELECT orders.*, orders_by_users.id as order_num FROM orders JOIN orders_by_users ON orders.id = order_id;
