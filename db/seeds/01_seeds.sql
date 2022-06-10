@@ -1,15 +1,15 @@
 -- Users table seeds here (Example)
-INSERT INTO users (name, phone_number, email) VALUES
-  ('FunkyFuuds', '7783208267', 'funkyfuuds@yahoo.com'),
-  ('Bob', '7783208267', 'bobby@yahoo.com'),
-  ('Doug', '7967576489', 'duggy@yahoo.com'),
-  ('Bulldog', '4035677893', 'ruff@yahoo.com'),
-  ('Porky', '7789808765', 'oink@yahoo.com'),
-  ('Fish', '6045831234', 'fish@yahoo.com'),
-  ('Blob', '4205672348', 'blobby@yahoo.com'),
-  ('Jim', '6549876754', 'jim@yahoo.com'),
-  ('Dwight', '1231231212', 'dwight@yahoo.com'),
-  ('Oscar', '9878766543', 'oscar@yahoo.com');
+INSERT INTO users (name, phone_number) VALUES
+  ('FunkyFuuds', '7783208267'),
+  ('Bob', '7783208267'),
+  ('Doug', '7967576489'),
+  ('Bulldog', '4035677893'),
+  ('Porky', '7789808765'),
+  ('Fish', '6045831234'),
+  ('Blob', '4205672348'),
+  ('Jim', '6549876754'),
+  ('Dwight', '1231231212'),
+  ('Oscar', '9878766543');
 
 
 INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALUES
