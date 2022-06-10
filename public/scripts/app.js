@@ -20,14 +20,14 @@ $(document).ready(function () {
       <p class="itemName"> ${item.item}
       </p>
       <p class="description">
-      <p> ${item.description}
+       ${item.description}
       </p>
-      </p>
+
     </div>
 
       <div class="add">
 
-        <div>
+        <div class="price">
           $${item.price / 100}
         </div>
         <div class="button">
@@ -119,7 +119,7 @@ $(document).ready(function () {
             const $element = $(`
 
 <div class="checkout">
-<div class="name">
+<div class="name"> Name
 <p> ${item.item}
 </p>
 </div>
@@ -170,7 +170,7 @@ $(document).ready(function () {
       <article class="article">
 <div class="yes">
 <p> Order has been placed and will be ready for pick-up in an estimated time of:</p>
-<div id="timer">
+<div class="timer">
   <div id="days"></div>
   <div id="hours"></div>
   <div id="minutes"></div>
@@ -185,9 +185,7 @@ $(document).ready(function () {
       };
 
       $(".btn.btn-primary").on("click", function () {
-        let data2;
-        let mrStampy = new Date
-
+        let mrStampy = new Date();
 
         $(".cart").empty();
         $(".outsideCart").empty();
@@ -199,53 +197,49 @@ $(document).ready(function () {
           location.reload();
         });
 
-        //  function makeTimer() {
+         function makeTimer() {
 
-        //   let time = cookTime * 60; // 3 minutes
-        //   console.log("time", time);
-        //   let endTime = new Date(mrStampy);
-        //   console.log("endTime", endTime);
+          let time = cookTime * 60; // 3 minutes
+          console.log("time", time);
+          let endTime = new Date(mrStampy);
+          console.log("endTime", endTime);
 
-        //   endTime = Date.parse(endTime) / 1000;
-        //   console.log("parse endTime", endTime);
-        //   endTime += time;
+          endTime = Date.parse(endTime) / 1000;
+          console.log("parse endTime", endTime);
+          endTime += time;
 
-        //   let now = new Date();
-        //   now = Date.parse(now) / 1000;
-        //   console.log("now", now);
+          let now = new Date();
+          now = Date.parse(now) / 1000;
+          console.log("now", now);
 
-        //   let timeLeft = endTime - now;
-        //   console.log("time left", timeLeft);
-        //   let days = Math.floor(timeLeft / 86400);
-        //   let hours = Math.floor((timeLeft - days * 86400) / 3600);
-        //   let minutes = Math.floor(
-        //     (timeLeft - days * 86400 - hours * 3600) / 60
-        //   );
-        //   let seconds = Math.floor(
-        //     timeLeft - days * 86400 - hours * 3600 - minutes * 60
-        //   );
-        //   console.log("see me!!!!!!", seconds);
+          let timeLeft = endTime - now;
+          console.log("time left", timeLeft);
+          let days = Math.floor(timeLeft / 86400);
+          let hours = Math.floor((timeLeft - days * 86400) / 3600);
+          let minutes = Math.floor(
+            (timeLeft - days * 86400 - hours * 3600) / 60
+          );
+          let seconds = Math.floor(
+            timeLeft - days * 86400 - hours * 3600 - minutes * 60
+          );
+          console.log("see me!!!!!!", seconds);
 
-        //   $("#days").html(days + "<span>Days</span>");
-        //   $("#hours").html(hours + "<span>Hours</span>");
-        //   $("#minutes").html(minutes + "<span>Minutes</span>");
-        //   $("#seconds").html(seconds + "<span>Seconds</span>");
-        // }
+          $("#days").html(` ${days} <span>  Days </span>`);
+          $("#hours").html(` ${ hours}  <span>  Hours </span>`);
+          $("#minutes").html(` ${ minutes}  <span>  Minutes </span>`);
+          $("#seconds").html( `${ seconds}  <span>  Seconds </span>`);
+        }
 
-        // setInterval(function () {
-        //   makeTimer();
-        // }, 1000);
-
+        setInterval(function () {
+          makeTimer();
+        }, 1000);
 
         // confirm("Are you sure you want to order? Its going to cost you your health! Either way both buttons execute the order lol.")
         $.ajax({
           method: "POST",
           url: "/api/food_items/order",
           data: cart,
-          success: (data, status, xhr) => {
-            // console.log("status",status)
-            data2 = data;
-          },
+          success: (data, status, xhr) => {},
         });
       });
     });

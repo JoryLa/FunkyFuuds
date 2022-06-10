@@ -16,17 +16,19 @@
   /* border: solid black 2px; */
   object-fit: cover;
   border-radius: 10px 10px 10px 10px;
-  box-shadow: 3px 3px 2px red;
+  box-shadow: 2px 2px 2px white;
 }
 
-.dishname{
-  /* border: solid black; */
-
+.itemName{
+  font-family: 'Creepster', cursive;
+  font-size: 35px;
+  text-shadow: 2px 2px 2px white;
 }
 
 .description{
-/* border: solid black; */
-
+  font-family: 'Barrio', cursive;
+  font-size: 20px;
+  text-shadow: 2px 2px 2px white;
 }
 
 .content{
@@ -150,4 +152,10 @@ width: 300px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  font-family: 'Barrio', cursive;
+}
+
+.price{
+  font-family: 'Creepster', cursive;
+  font-size: 20px;
 }

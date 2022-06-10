@@ -8,7 +8,7 @@ const header = () => {
   <div class="extra">
     <div class="header">
       <p class="navName"><b><a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target="_blank">FUNKY</a></b>FUUDS <br /> </p>
-      <p>won't be beet</p>
+      <p id="beet" >won't be beet</p>
     </div>
   <div class="navright">
   <button type="button"  <span class='bi bi-cart'> CART</span></button>

@@ -1,95 +1,82 @@
-.cart{
+.cart {
   margin: 20px;
   display: flex;
-  border: solid black;
+  /* border: solid black; */
   height: 50px;
   height: fit-content;
   flex-direction: column;
-  background-color: pink;
+  background-color: yellow;
 }
 
-.checkout{
+.checkout {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
 
 }
 
-.name{
-display: flex;
-flex-direction: column;
-white-space: normal;
-width: 300px;
-border: solid black;
-}
-
-.qty{
+.name {
   display: flex;
   flex-direction: column;
+  white-space: normal;
+  width: 300px;
+  font-family: 'Creepster', cursive;
+  font-size: 20px;
 }
 
-.price{
+.qty {
   display: flex;
   flex-direction: column;
+  font-family: 'Creepster', cursive;
+  font-size: 20px;
 }
 
-.outsideCart{
+.price {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Creepster', cursive;
+  font-size: 20px;
+}
+
+.outsideCart {
   margin: 20px;
   display: flex;
   border: solid black;
   height: 50px;
   height: fit-content;
   flex-direction: column;
-
+  background-color: yellow;
 }
 
-.order{
+
+.order {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  /* cursor: url('/docs/blobhead.png'), auto; */
+  font-family: 'Creepster', cursive;
+  font-size: 20px;
 }
 
 /* For count down timer */
 
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,900,700italic,700,600italic,600,400italic);
-
-body {
-  font-family: 'Titillium Web', cursive;
-  width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  color: white;
-  background: #222;
-  font-weight: 100;
+.timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-div {
-  display: inline-block;
-  line-height: 1;
-  padding: 20px;
-  font-size: 40px;
+#seconds{
+ margin-left: 5px;
 }
 
-span {
-  display: block;
-  font-size: 20px;
-  color: white;
+#minutes{
+  margin-left: 5px;
 }
 
-#days {
-  font-size: 100px;
-  color: #db4844;
+#hours{
+  margin-left: 5px;
 }
-#hours {
-  font-size: 100px;
-  color: #f07c22;
-}
-#minutes {
-  font-size: 100px;
-  color: #f6da74;
-}
-#seconds {
-  font-size: 50px;
-  color: #abcd58;
+
+#days{
+
 }

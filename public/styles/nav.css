@@ -18,11 +18,13 @@
   font-family: 'Libre Franklin', sans-serif;
   font-size: 50px;
  margin-bottom: 0px;
+ text-shadow: 2px 2px 2px white;
 }
 
 a[href] {
   color: red;
   text-decoration: none;
+  text-shadow: 2px 2px 2px white;
 }
 
 .leftNav{
@@ -56,4 +58,8 @@ a[href] {
 .navright{
   display: flex;
   align-items: center;
+}
+
+#beet{
+  font-family: 'Barrio', cursive;
 }
