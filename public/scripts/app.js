@@ -128,7 +128,7 @@ $(document).ready(function () {
 </p>
 </div>
 <div class="price"> Price
-<p> ${(item.price * cart[key]) / 100}
+<p> $${(item.price * cart[key]) / 100}
  </p>
  </div>
 </div>
@@ -185,8 +185,7 @@ $(document).ready(function () {
       };
 
       $(".btn.btn-primary").on("click", function () {
-        $("#plus").prop("disabled", true);
-        $("#minus").prop("disabled", true);
+        $(".food-list").hide()
         let mrStampy = new Date();
 
         $(".cart").empty();
