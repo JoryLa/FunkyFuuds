@@ -56,7 +56,7 @@ module.exports = (db) => {
     databaseQueries.saveCart(db, cart, user_id).then((result) => {
       databaseQueries.getCookTimeByOrderId(db).then((data) => {
         const cooktime = data;
-        return sms.sendSMS('+17783208267', `Hi there! Your order will be ready in ${cooktime} minutes!`)
+        return sms.sendSMS('+12502632448', `Hi there! Your order will be ready in ${cooktime} minutes!`)
       });
       databaseQueries.getOrderToRestaurant(db, user_id).then((data) => {
         const orderForRestaurant = data;
