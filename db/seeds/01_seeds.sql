@@ -1,6 +1,6 @@
 -- Users table seeds here (Example)
 INSERT INTO users (name, phone_number) VALUES
-  ('FunkyFuuds', '7783208267'),
+  ('FunkyFuuds', '2502632448'),
   ('Bob', '7783208267'),
   ('Doug', '7967576489'),
   ('Bulldog', '4035677893'),
