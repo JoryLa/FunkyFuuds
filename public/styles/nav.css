@@ -39,6 +39,7 @@ a[href] {
   color: red;
   align-items: center;
   justify-content: center;
+  cursor: url('/docs/blobhead.png'), auto;
 }
 
 .header{
