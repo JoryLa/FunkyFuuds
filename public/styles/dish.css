@@ -1,56 +1,65 @@
-.food{
+.food-list {
+  padding-top: 200px;
+}
+
+.food {
   display: flex;
   justify-content: space-evenly;
-  background-color: yellow;
+
   align-items: center;
   height: 120px;
   border: solid black;
   margin: 20px;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 0px 3px 3px black;
+  background-color: #f5f500;
+  background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
 }
 
-.box img{
+.box img {
   width: 100px;
   height: 100px;
-  /* border: solid black 2px; */
+
   object-fit: cover;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 2px 2px 2px white;
 }
 
-.itemName{
+.itemName {
   font-family: 'Creepster', cursive;
   font-size: 35px;
   text-shadow: 2px 2px 2px white;
+  color: #ac4a16;
 }
 
-.description{
-  font-family: 'Barrio', cursive;
+.description {
+  font-family: 'Creepster', cursive;
   font-size: 20px;
   text-shadow: 2px 2px 2px white;
 }
 
-.content{
-  /* border: solid black; */
+.content {
+
   width: 60%;
   height: 100px;
   white-space: normal;
 
 }
-.add{
+
+.add {
   justify-content: space-around;
   align-items: center;
   display: flex;
-  /* border: solid black; */
+
   flex-direction: column;
   height: 100px;
 }
 
-.button{
+.button {
   display: flex;
 }
-#plus.btn{
+
+#plus.btn {
   background-color: fuchsia;
   color: white;
   box-shadow: 0px 2px 2px black;
@@ -59,8 +68,8 @@
   cursor: url('/docs/blobhead.png'), auto;
 }
 
-#minus.btn{
-  background-color: brown;
+#minus.btn {
+  background-color: rgb(36, 188, 36);
   color: white;
   box-shadow: 0px 2px 2px black;
   border-radius: 40px 40px 40px 40px;
@@ -68,12 +77,17 @@
 }
 
 
-.input{
+.input {
   width: 40px;
   appearance: none;
   text-align: center;
   box-shadow: 0px 2px 2px black;
   border-radius: 40px 40px 40px 40px;
+  animation: colorchange 5s linear 1s infinite;
+
+
+  -webkit-animation: colorchange 5s linear 0s infinite alternate;
+
 }
 
 input::-webkit-outer-spin-button,
@@ -84,42 +98,39 @@ input::-webkit-inner-spin-button {
 
 
 
-.cart{
+.cart {
   margin: 20px;
   display: flex;
-  /* border: solid black; */
+
   height: 50px;
   height: fit-content;
   flex-direction: column;
-  /* background-color: pink; */
+
 }
 
-.checkout{
+.checkout {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
 
 }
 
-.name{
-display: flex;
-flex-direction: column;
-white-space: normal;
-width: 300px;
-/* border: solid black; */
+.name {
+  display: flex;
+  flex-direction: column;
+  white-space: normal;
+  width: 300px;
+
 }
 
-.qty{
+.qty {
   display: flex;
   flex-direction: column;
 }
 
-.price{
-  display: flex;
-  flex-direction: column;
-}
 
-.outsideCart{
+
+.outsideCart {
   margin: 20px;
   display: flex;
   border: solid black;
@@ -130,7 +141,7 @@ width: 300px;
   box-shadow: 0px 3px 3px black;
 }
 
-.order{
+.order {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -138,25 +149,69 @@ width: 300px;
 
 }
 
-/* .yes.btn-primary{
-  display: flex;
-  border: solid red;
-  justify-content: center;
-}
 
-.reset{
-  display: flex;
-  justify-content: center;
-} */
-
-.article{
+.article {
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: 'Barrio', cursive;
+  font-family: 'Creepster', cursive;
+  font-size: 30px;
+  color: #ac4a16;
+  text-shadow: 3px 3px 3px white;
 }
 
-.price{
+.foodPrice {
+  display: flex;
+  flex-direction: column;
   font-family: 'Creepster', cursive;
-  font-size: 20px;
+  font-size: 40px;
+  color: #ac4a16;
+  text-shadow: 2px 2px 2px white;
+}
+
+@keyframes colorchange {
+  0% {
+    background: red;
+    color: cyan;
+  }
+
+  33% {
+    background: green;
+    color: magenta;
+  }
+
+  66% {
+    background: blue;
+    color: yellow;
+  }
+
+  100% {
+    background: red;
+    color: cyan;
+  }
+}
+
+@-webkit-keyframes colorchange
+
+/* Safari and Chrome - necessary duplicate */
+  {
+  0% {
+    background: red;
+    color: cyan;
+  }
+
+  33% {
+    background: green;
+    color: magenta;
+  }
+
+  66% {
+    background: blue;
+    color: yellow;
+  }
+
+  100% {
+    background: red;
+    color: cyan;
+  }
 }

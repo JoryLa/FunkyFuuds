@@ -27,7 +27,7 @@ $(document).ready(function () {
 
       <div class="add">
 
-        <div class="price">
+        <div class="foodPrice">
           $${item.price / 100}
         </div>
         <div class="button">
@@ -185,13 +185,14 @@ $(document).ready(function () {
       };
 
       $(".btn.btn-primary").on("click", function () {
+        $("#plus").prop("disabled", true);
+        $("#minus").prop("disabled", true);
         let mrStampy = new Date();
 
         $(".cart").empty();
         $(".outsideCart").empty();
         let feedMe = confirmation();
-        $("#plus").prop("disabled", true);
-        $("#minus").prop("disabled", true);
+
         $(".outsideCart").append(feedMe);
 
         $("#return").on("click", function () {
