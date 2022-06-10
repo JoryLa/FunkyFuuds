@@ -1,12 +1,11 @@
 .cart {
   margin: 20px;
   display: flex;
-  /* border: solid black; */
   height: 50px;
   height: fit-content;
   flex-direction: column;
   background-color: #f5f500;
-background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
+  background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
 }
 
 .checkout {
@@ -23,22 +22,19 @@ background-image: url("https://www.transparenttextures.com/patterns/tileable-woo
   flex-direction: column;
   white-space: normal;
   width: 300px;
-  /* font-family: 'Creepster', cursive;
-  font-size: 20px; */
+
 }
 
 .qty {
   display: flex;
   flex-direction: column;
-  /* font-family: 'Creepster', cursive;
-  font-size: 20px; */
+
 }
 
 .price {
   display: flex;
   flex-direction: column;
-  /* font-family: 'Creepster', cursive;
-  font-size: 20px; */
+
 }
 
 .outsideCart {
@@ -50,9 +46,9 @@ background-image: url("https://www.transparenttextures.com/patterns/tileable-woo
   height: fit-content;
   flex-direction: column;
   background-color: yellow;
-  position: fixed ;
+  position: fixed;
   top: 120px;
-  width: 95%
+  width: 96.5%
 }
 
 
@@ -74,21 +70,17 @@ background-image: url("https://www.transparenttextures.com/patterns/tileable-woo
   justify-content: center;
 }
 
-#seconds{
- margin-left: 5px;
- color: fuchsia;
+#seconds {
+  margin-left: 5px;
+  color: fuchsia;
 }
 
-#minutes{
+#minutes {
   margin-left: 5px;
   color: green;
 }
 
-#hours{
+#hours {
   margin-left: 5px;
   color: orange
 }
-
-
-
-
