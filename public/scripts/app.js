@@ -185,56 +185,9 @@ $(document).ready(function () {
       };
 
       $(".btn.btn-primary").on("click", function () {
-        let orderTime;
-        let whoopwhoop;
         let data2;
-        // $.get("/order").then((res) =>{
-        //   orderTime = res
-        // for(let item in orderTime){
-        //   whoopwhoop = item.order_time
+        let mrStampy = new Date
 
-        // }
-        console.log("I want my food baby!!!", whoopwhoop)
-        console.log("res", orderTime)
-
-        // })
-
-
-        function makeTimer() {
-
-          //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");
-            var endTime = new Date("29 April 2023 9:56:00 GMT+01:00");
-              endTime = (Date.parse(endTime) / 1000);
-            // console.log("end", endTime)
-              // var now = new Date();
-              // now = (Date.parse(now) / 1000);
-            // console.log(now)
-            let cookTime = 960
-            let now = $.now()
-            let readyTime = $.now() + cookTime
-            // console.log($.now() + cookTime)
-              let timeLeft = readyTime - now;
-          // console.log(timeLeft)
-              let days = Math.floor(timeLeft / 86400);
-              let hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-              let minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
-              let seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-
-              if (hours < "10") { hours = "0" + hours; }
-              if (minutes < "10") { minutes = "0" + minutes; }
-              if (seconds < "10") { seconds = "0" + seconds; }
-
-              $("#days").html(days + "<span>Days</span>");
-              $("#hours").html(hours + "<span>Hours</span>");
-              $("#minutes").html(minutes + "<span>Minutes</span>");
-              $("#seconds").html(seconds + "<span>Seconds</span>");
-
-          }
-
-          setInterval(function() { makeTimer(); }, 1000);
-
-        // console.log(new Date());
-        // console.log(new Date().toString());
 
         $(".cart").empty();
         $(".outsideCart").empty();
@@ -245,17 +198,54 @@ $(document).ready(function () {
         $("#return").on("click", function () {
           location.reload();
         });
-        // console.log("cart", cart);
-        // console.log("key", key)
-        // console.log("cart[key]", cart[key])
+
+        //  function makeTimer() {
+
+        //   let time = cookTime * 60; // 3 minutes
+        //   console.log("time", time);
+        //   let endTime = new Date(mrStampy);
+        //   console.log("endTime", endTime);
+
+        //   endTime = Date.parse(endTime) / 1000;
+        //   console.log("parse endTime", endTime);
+        //   endTime += time;
+
+        //   let now = new Date();
+        //   now = Date.parse(now) / 1000;
+        //   console.log("now", now);
+
+        //   let timeLeft = endTime - now;
+        //   console.log("time left", timeLeft);
+        //   let days = Math.floor(timeLeft / 86400);
+        //   let hours = Math.floor((timeLeft - days * 86400) / 3600);
+        //   let minutes = Math.floor(
+        //     (timeLeft - days * 86400 - hours * 3600) / 60
+        //   );
+        //   let seconds = Math.floor(
+        //     timeLeft - days * 86400 - hours * 3600 - minutes * 60
+        //   );
+        //   console.log("see me!!!!!!", seconds);
+
+        //   $("#days").html(days + "<span>Days</span>");
+        //   $("#hours").html(hours + "<span>Hours</span>");
+        //   $("#minutes").html(minutes + "<span>Minutes</span>");
+        //   $("#seconds").html(seconds + "<span>Seconds</span>");
+        // }
+
+        // setInterval(function () {
+        //   makeTimer();
+        // }, 1000);
+
+
         // confirm("Are you sure you want to order? Its going to cost you your health! Either way both buttons execute the order lol.")
         $.ajax({
           method: "POST",
           url: "/api/food_items/order",
           data: cart,
           success: (data, status, xhr) => {
-            data2 = data
-             }
+            // console.log("status",status)
+            data2 = data;
+          },
         });
       });
     });
