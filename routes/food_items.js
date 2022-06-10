@@ -17,16 +17,22 @@ router.use(session({ secret: "keyboard cat", cookie: { maxAge: 60000 } }));
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    const user_id = req.session.user_id;
     databaseQueries
       .getAllItems(db)
       .then((data) => {
         const foodItems = data;
         res.json(foodItems);
       })
+      databaseQueries.getUser(db, user_id)
+      .then((data) => {
+        return data;
+      })
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
   });
+//.getUser(db, user_id) const user_id = req.session.user_id;
 
   // router.get("/checkout", (req, res) => {
   //   databaseQueries.getOrderByUser(db)

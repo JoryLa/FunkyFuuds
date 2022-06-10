@@ -36,7 +36,6 @@ const saveCart =  function(db, cart, user_id) {
   for (const line in cart) {
     const item_id = line;
     const quantity = cart[line];
-    const values = [user_id , item_id, quantity];
     const newItem = `(${user_id}, ${item_id}, ${quantity}),`;
     endQuery += newItem;
   }
@@ -68,7 +67,9 @@ exports.getCookTimeByOrderId = getCookTimeByOrderId;
 const getOrderToRestaurant = (db, user_id) => {
   return db
   .query(`SELECT items.item AS name, orders.quantity AS quantity
-  FROM orders JOIN items ON orders.item_id = items.id JOIN users ON users.id = orders.user_id
+  FROM orders 
+  JOIN items ON orders.item_id = items.id 
+  JOIN users ON users.id = orders.user_id
   WHERE user_id = $1 GROUP BY items.item, orders.quantity;`, [user_id])
     .then((result) => {
       return result.rows;
@@ -80,7 +81,7 @@ const getOrderToRestaurant = (db, user_id) => {
 
 exports.getOrderToRestaurant = getOrderToRestaurant;
 
-// Retrieves order time from database
+// Retrieves s time from database
 const getOrderTime = (db, user_id) => {
   return db
   .query(`SELECT order_time FROM orders where user_id = $1 LIMIT 1;`, [user_id])
@@ -94,3 +95,17 @@ const getOrderTime = (db, user_id) => {
 };
 
 exports.getOrderTime = getOrderTime;
+
+const getUser = (db, user_id) => {
+  return db
+  .query(`SELECT name FROM users where id = $1;`, [user_id])
+    .then((result) => {
+      console.log('result.rows!!!!!!!!!!!!', result.rows[0].name);
+      return result.rows[0].name;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+exports.getUser = getUser;
