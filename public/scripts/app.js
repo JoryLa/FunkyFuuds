@@ -190,9 +190,10 @@ $(document).ready(function () {
         $(".cart").empty();
         $(".outsideCart").empty();
         let feedMe = confirmation();
-        $(".outsideCart").append(feedMe);
         $("#plus").prop("disabled", true);
         $("#minus").prop("disabled", true);
+        $(".outsideCart").append(feedMe);
+
         $("#return").on("click", function () {
           location.reload();
         });

@@ -56,6 +56,7 @@
   box-shadow: 0px 2px 2px black;
   border-radius: 40px 40px 40px 40px;
   border: solid black 2px;
+  cursor: url('/docs/blobhead.png'), auto;
 }
 
 #minus.btn{
@@ -134,7 +135,7 @@ width: 300px;
   flex-direction: row;
   justify-content: space-evenly;
 
-  /* cursor: url('/docs/blobhead.png'), auto; */
+
 }
 
 /* .yes.btn-primary{
