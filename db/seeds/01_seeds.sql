@@ -15,9 +15,9 @@ INSERT INTO users (name, phone_number) VALUES
 INSERT INTO items (item, description, price, cooking_time, thumbnail_photo) VALUES
   ('Funky Burger', 'Your favourite burger but funkier', 2000, 3, '../../docs/burger.jpeg'),
   ('Paralizing pizza', 'Do not test it', 3000, 10, '../../docs/pizza.jpeg'),
-  ('Stuffed animal', '????', 3000, 10, '../../docs/stuffed_animal.jpeg'),
-  ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, '../../docs/fish.jpeg' ),
-  ('Pork?', 'Your guess is as good as ours', 300, 5, '../../docs/pork.jpeg'),
+  ('Stuffed animal', 'Animal you stuff into yourself', 3000, 10, '../../docs/stuffed_animal.jpeg'),
+  ('Pickled fish in a bucket', 'Straight from the docks and into the brine', 4000, 3, '../../docs/fish.jpeg'),
+  ('Pork-o-holic', 'Your guess is as good as ours', 300, 5, '../../docs/pork.jpeg'),
   ('Seared burrito', 'Unexpected consequences', 600, 4, '../../docs/burrito.jpeg'),
   ('Angry Perogies', 'Proceed with caution', 800, 8, '../../docs/perogies.jpeg'),
   ('Furry Bagel', 'No questions asked', 250, 3, '../../docs/bagel.jpeg'),
