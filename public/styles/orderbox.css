@@ -5,14 +5,17 @@
   height: 50px;
   height: fit-content;
   flex-direction: column;
-  background-color: yellow;
+  background-color: #f5f500;
+background-image: url("https://www.transparenttextures.com/patterns/tileable-wood-colored.png");
 }
 
 .checkout {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-
+  font-family: 'Creepster', cursive;
+  font-size: 30px;
+  text-shadow: 3px 3px 3px white;
 }
 
 .name {
@@ -20,25 +23,26 @@
   flex-direction: column;
   white-space: normal;
   width: 300px;
-  font-family: 'Creepster', cursive;
-  font-size: 20px;
+  /* font-family: 'Creepster', cursive;
+  font-size: 20px; */
 }
 
 .qty {
   display: flex;
   flex-direction: column;
-  font-family: 'Creepster', cursive;
-  font-size: 20px;
+  /* font-family: 'Creepster', cursive;
+  font-size: 20px; */
 }
 
 .price {
   display: flex;
   flex-direction: column;
-  font-family: 'Creepster', cursive;
-  font-size: 20px;
+  /* font-family: 'Creepster', cursive;
+  font-size: 20px; */
 }
 
 .outsideCart {
+  margin-top: 1050px;
   margin: 20px;
   display: flex;
   border: solid black;
@@ -46,6 +50,9 @@
   height: fit-content;
   flex-direction: column;
   background-color: yellow;
+  position: fixed ;
+  top: 120px;
+  width: 95%
 }
 
 
@@ -54,7 +61,9 @@
   flex-direction: row;
   justify-content: space-evenly;
   font-family: 'Creepster', cursive;
-  font-size: 20px;
+  font-size: 30px;
+  text-shadow: 3px 3px 3px white;
+  color: #ac4a16;
 }
 
 /* For count down timer */
@@ -67,16 +76,19 @@
 
 #seconds{
  margin-left: 5px;
+ color: fuchsia;
 }
 
 #minutes{
   margin-left: 5px;
+  color: green;
 }
 
 #hours{
   margin-left: 5px;
+  color: orange
 }
 
-#days{
 
-}
+
+

@@ -1,10 +1,8 @@
-.nav{
-  display:flex;
-  /* justify-content:space-between; */
+.nav {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: yellow;
-  /* border: solid black; */
-  position:relative;
+  position: fixed;
   z-index: 1;
 
   width: 100%;
@@ -12,55 +10,106 @@
   padding-left: 1.5em;
   padding-right: 1.5em;
   box-shadow: 0px 3px 3px black;
+
+  background-color: #f5f500;
+  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
 }
 
-.navName{
+.navName {
   font-family: 'Libre Franklin', sans-serif;
   font-size: 50px;
- margin-bottom: 0px;
- text-shadow: 2px 2px 2px white;
+  margin-bottom: 0px;
+  text-shadow: 3px 3px 3px rgb(77, 14, 56);
 }
 
 a[href] {
   color: red;
   text-decoration: none;
-  text-shadow: 2px 2px 2px white;
+  text-shadow: 5px 5px 5px rgb(77, 14, 56);
 }
 
-.leftNav{
-  height: 100px;
+.leftNav {
+  height: 80px;
   width: 100px;
-  border: solid black;
-  background-color: navy;
-  border-radius: 0px 0px 0px 50px;
+
+  box-shadow: 3px 3px 3px white;
+  border-radius: 20px 20px 20px 20px;
+  animation: colorchange 4s linear 1s infinite;
+  -webkit-animation: colorchange 4s linear 0s infinite alternate;
+
 }
 
-.bi.bi-trash{
+.bi.bi-trash {
   color: red;
   align-items: center;
   justify-content: center;
-  cursor: url('/docs/blobhead.png'), auto;
+  cursor: url('/docs/ricky3.png'), auto;
 }
 
-.header{
+.header {
   margin-left: 10px;
   display: flex;
-  justify-content:right;
+  justify-content: right;
   flex-direction: column;
 }
 
-.extra{
-  display: flex;
-  /* justify-content: space-between;
-  width: 90%; */
-  flex-direction: row;
-}
 
-.navright{
+
+.navright {
   display: flex;
   align-items: center;
 }
 
-#beet{
-  font-family: 'Barrio', cursive;
+#beet {
+  font-family: 'Creepster', cursive;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px white;
+  color: rgb(77, 14, 56);
+}
+
+@keyframes colorchange {
+  0% {
+    background: red;
+    color: cyan;
+  }
+
+  33% {
+    background: green;
+    color: magenta;
+  }
+
+  66% {
+    background: blue;
+    color: yellow;
+  }
+
+  100% {
+    background: red;
+    color: cyan;
+  }
+}
+
+@-webkit-keyframes colorchange
+
+/* Safari and Chrome - necessary duplicate */
+  {
+  0% {
+    background: red;
+    color: cyan;
+  }
+
+  33% {
+    background: green;
+    color: magenta;
+  }
+
+  66% {
+    background: blue;
+    color: yellow;
+  }
+
+  100% {
+    background: red;
+    color: cyan;
+  }
 }
