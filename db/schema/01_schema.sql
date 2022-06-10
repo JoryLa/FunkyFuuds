@@ -25,5 +25,13 @@ CREATE TABLE orders (
   item_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   quantity INTEGER NOT NULL DEFAULT 1,
 );
+<<<<<<< HEAD
+=======
 
+-- CREATE TABLE orders_by_users (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE
+-- );
 
+-- SELECT orders.*, orders_by_users.id as order_num FROM orders JOIN orders_by_users ON orders.id = order_id;
+>>>>>>> db16de25ac62a12581db81eb5f303851c8753714
